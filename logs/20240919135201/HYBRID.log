@@ -1,0 +1,182 @@
+2024-09-19 13:52:09,557 INFO    : Namespace(batch_size='512', data_path='./data/HYBRID/', dataset='HYBRID', debug=False, device=device(type='cuda', index=0), emb_dim=200, ent_r='150', epoch_num=200, explore=False, gpu='0', l2=0.0, learning_rate='2e-1', log_path='./logs/20240919135201/HYBRID', logger=<RootLogger root (INFO)>, margin=8.0, model_name='LoraKGE_Layers', multi_layers_path='train_sorted_by_edges_betweenness.txt', neg_ratio=10, note='', num_ent_layers='10', num_layer=1, num_rel_layers='1', patience=3, predict_result=False, r=100, r_fixed=True, random_seed=3407, record=False, rel_r='20', save_path='./checkpoint/HYBRID', skip_previous='False', snapshot_num=5, train_new=True, using_multi_layers=False, using_various_ranks='True', using_various_ranks_reverse=False, valid_metrics='mrr')
+2024-09-19 13:52:17,975 INFO    : Snapshot:0	0	3	Epoch:0	Loss:75.364	MRR:14.46	Hits@10:28.35	Best:14.46
+2024-09-19 13:52:23,593 INFO    : Snapshot:0	0	3	Epoch:1	Loss:37.49	MRR:22.35	Hits@10:39.99	Best:22.35
+2024-09-19 13:52:28,974 INFO    : Snapshot:0	0	3	Epoch:2	Loss:17.512	MRR:24.62	Hits@10:43.67	Best:24.62
+2024-09-19 13:52:34,542 INFO    : Snapshot:0	0	3	Epoch:3	Loss:9.35	MRR:25.2	Hits@10:44.45	Best:25.2
+2024-09-19 13:52:40,024 INFO    : Snapshot:0	1	3	Epoch:4	Loss:5.752	MRR:25.17	Hits@10:44.52	Best:25.2
+2024-09-19 13:52:45,463 INFO    : Snapshot:0	2	3	Epoch:5	Loss:4.028	MRR:24.94	Hits@10:44.55	Best:25.2
+2024-09-19 13:52:51,057 INFO    : Early Stopping! Snapshot:0 Epoch: 6 Best Results: 25.2
+2024-09-19 13:52:51,146 INFO    : => loading checkpoint './checkpoint/HYBRID\0model_best.tar'
+2024-09-19 13:52:54,514 INFO    : 
++------------+--------+--------+--------+--------+---------+
+| Snapshot:0 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2543 | 0.154  | 0.3053 | 0.365  |  0.4371 |
++------------+--------+--------+--------+--------+---------+
+2024-09-19 13:53:01,571 INFO    : Snapshot:1	0	3	Epoch:0	Loss:12.531	MRR:22.63	Hits@10:40.36	Best:22.63
+2024-09-19 13:53:04,290 INFO    : Snapshot:1	0	3	Epoch:1	Loss:6.734	MRR:24.59	Hits@10:43.7	Best:24.59
+2024-09-19 13:53:06,969 INFO    : Snapshot:1	0	3	Epoch:2	Loss:5.92	MRR:25.74	Hits@10:44.72	Best:25.74
+2024-09-19 13:53:09,546 INFO    : Snapshot:1	0	3	Epoch:3	Loss:5.555	MRR:26.26	Hits@10:46.02	Best:26.26
+2024-09-19 13:53:12,190 INFO    : Snapshot:1	0	3	Epoch:4	Loss:5.337	MRR:26.55	Hits@10:45.9	Best:26.55
+2024-09-19 13:53:14,814 INFO    : Snapshot:1	0	3	Epoch:5	Loss:5.189	MRR:26.95	Hits@10:46.25	Best:26.95
+2024-09-19 13:53:17,469 INFO    : Snapshot:1	1	3	Epoch:6	Loss:5.093	MRR:26.23	Hits@10:46.26	Best:26.95
+2024-09-19 13:53:20,123 INFO    : Snapshot:1	0	3	Epoch:7	Loss:4.99	MRR:27.3	Hits@10:46.62	Best:27.3
+2024-09-19 13:53:22,737 INFO    : Snapshot:1	1	3	Epoch:8	Loss:4.908	MRR:26.8	Hits@10:46.38	Best:27.3
+2024-09-19 13:53:25,347 INFO    : Snapshot:1	0	3	Epoch:9	Loss:4.869	MRR:27.36	Hits@10:47.03	Best:27.36
+2024-09-19 13:53:28,017 INFO    : Snapshot:1	1	3	Epoch:10	Loss:4.834	MRR:27.27	Hits@10:46.9	Best:27.36
+2024-09-19 13:53:30,675 INFO    : Snapshot:1	0	3	Epoch:11	Loss:4.806	MRR:27.6	Hits@10:47.14	Best:27.6
+2024-09-19 13:53:33,271 INFO    : Snapshot:1	1	3	Epoch:12	Loss:4.782	MRR:27.55	Hits@10:47.08	Best:27.6
+2024-09-19 13:53:35,904 INFO    : Snapshot:1	0	3	Epoch:13	Loss:4.724	MRR:27.62	Hits@10:47.21	Best:27.62
+2024-09-19 13:53:38,554 INFO    : Snapshot:1	1	3	Epoch:14	Loss:4.722	MRR:27.33	Hits@10:47.1	Best:27.62
+2024-09-19 13:53:41,103 INFO    : Snapshot:1	2	3	Epoch:15	Loss:4.67	MRR:27.53	Hits@10:47.35	Best:27.62
+2024-09-19 13:53:43,740 INFO    : Snapshot:1	0	3	Epoch:16	Loss:4.663	MRR:27.79	Hits@10:47.11	Best:27.79
+2024-09-19 13:53:46,348 INFO    : Snapshot:1	1	3	Epoch:17	Loss:4.663	MRR:27.52	Hits@10:47.19	Best:27.79
+2024-09-19 13:53:49,038 INFO    : Snapshot:1	2	3	Epoch:18	Loss:4.646	MRR:27.48	Hits@10:47.49	Best:27.79
+2024-09-19 13:53:51,712 INFO    : Early Stopping! Snapshot:1 Epoch: 19 Best Results: 27.79
+2024-09-19 13:53:51,804 INFO    : => loading checkpoint './checkpoint/HYBRID\1model_best.tar'
+2024-09-19 13:53:57,301 INFO    : 
++------------+--------+--------+--------+--------+---------+
+| Snapshot:1 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2543 | 0.154  | 0.3053 | 0.365  |  0.4371 |
+|     1      |  0.27  | 0.1693 | 0.3137 | 0.3787 |  0.4626 |
++------------+--------+--------+--------+--------+---------+
+2024-09-19 13:54:22,044 INFO    : Snapshot:2	0	3	Epoch:0	Loss:45.481	MRR:15.42	Hits@10:28.18	Best:15.42
+2024-09-19 13:54:36,521 INFO    : Snapshot:2	0	3	Epoch:1	Loss:32.587	MRR:16.29	Hits@10:29.83	Best:16.29
+2024-09-19 13:54:50,799 INFO    : Snapshot:2	0	3	Epoch:2	Loss:30.771	MRR:16.8	Hits@10:30.64	Best:16.8
+2024-09-19 13:55:04,546 INFO    : Snapshot:2	0	3	Epoch:3	Loss:29.739	MRR:17.4	Hits@10:31.27	Best:17.4
+2024-09-19 13:55:19,121 INFO    : Snapshot:2	0	3	Epoch:4	Loss:29.091	MRR:17.57	Hits@10:31.54	Best:17.57
+2024-09-19 13:55:33,048 INFO    : Snapshot:2	0	3	Epoch:5	Loss:28.603	MRR:17.88	Hits@10:32.02	Best:17.88
+2024-09-19 13:55:47,106 INFO    : Snapshot:2	0	3	Epoch:6	Loss:28.232	MRR:17.91	Hits@10:32.04	Best:17.91
+2024-09-19 13:56:00,606 INFO    : Snapshot:2	0	3	Epoch:7	Loss:27.979	MRR:18.13	Hits@10:32.39	Best:18.13
+2024-09-19 13:56:14,835 INFO    : Snapshot:2	1	3	Epoch:8	Loss:27.719	MRR:18.02	Hits@10:32.29	Best:18.13
+2024-09-19 13:56:28,952 INFO    : Snapshot:2	0	3	Epoch:9	Loss:27.481	MRR:18.48	Hits@10:32.71	Best:18.48
+2024-09-19 13:56:43,267 INFO    : Snapshot:2	0	3	Epoch:10	Loss:27.382	MRR:18.52	Hits@10:32.74	Best:18.52
+2024-09-19 13:56:57,305 INFO    : Snapshot:2	1	3	Epoch:11	Loss:27.267	MRR:18.5	Hits@10:32.81	Best:18.52
+2024-09-19 13:57:11,473 INFO    : Snapshot:2	2	3	Epoch:12	Loss:27.116	MRR:18.5	Hits@10:32.92	Best:18.52
+2024-09-19 13:57:25,325 INFO    : Snapshot:2	0	3	Epoch:13	Loss:26.986	MRR:18.67	Hits@10:33.01	Best:18.67
+2024-09-19 13:57:39,347 INFO    : Snapshot:2	1	3	Epoch:14	Loss:26.98	MRR:18.65	Hits@10:33.23	Best:18.67
+2024-09-19 13:57:53,410 INFO    : Snapshot:2	2	3	Epoch:15	Loss:26.89	MRR:18.62	Hits@10:33.02	Best:18.67
+2024-09-19 13:58:07,463 INFO    : Snapshot:2	0	3	Epoch:16	Loss:26.729	MRR:18.78	Hits@10:33.09	Best:18.78
+2024-09-19 13:58:21,402 INFO    : Snapshot:2	1	3	Epoch:17	Loss:26.652	MRR:18.72	Hits@10:33.19	Best:18.78
+2024-09-19 13:58:35,357 INFO    : Snapshot:2	0	3	Epoch:18	Loss:26.674	MRR:18.89	Hits@10:33.24	Best:18.89
+2024-09-19 13:58:49,466 INFO    : Snapshot:2	1	3	Epoch:19	Loss:26.548	MRR:18.65	Hits@10:33.29	Best:18.89
+2024-09-19 13:59:03,449 INFO    : Snapshot:2	0	3	Epoch:20	Loss:26.526	MRR:18.9	Hits@10:33.47	Best:18.9
+2024-09-19 13:59:17,347 INFO    : Snapshot:2	1	3	Epoch:21	Loss:26.461	MRR:18.83	Hits@10:33.73	Best:18.9
+2024-09-19 13:59:30,612 INFO    : Snapshot:2	0	3	Epoch:22	Loss:26.448	MRR:19.12	Hits@10:33.45	Best:19.12
+2024-09-19 13:59:43,752 INFO    : Snapshot:2	1	3	Epoch:23	Loss:26.371	MRR:19.08	Hits@10:33.41	Best:19.12
+2024-09-19 13:59:57,302 INFO    : Snapshot:2	2	3	Epoch:24	Loss:26.349	MRR:19.05	Hits@10:33.54	Best:19.12
+2024-09-19 14:00:11,545 INFO    : Early Stopping! Snapshot:2 Epoch: 25 Best Results: 19.12
+2024-09-19 14:00:11,638 INFO    : => loading checkpoint './checkpoint/HYBRID\2model_best.tar'
+2024-09-19 14:00:23,943 INFO    : 
++------------+--------+--------+--------+--------+---------+
+| Snapshot:2 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2543 | 0.154  | 0.3053 | 0.365  |  0.4371 |
+|     1      |  0.27  | 0.1693 | 0.3137 | 0.3787 |  0.4626 |
+|     2      | 0.1895 | 0.1156 | 0.2144 | 0.2634 |  0.3323 |
++------------+--------+--------+--------+--------+---------+
+2024-09-19 14:00:54,925 INFO    : Snapshot:3	0	3	Epoch:0	Loss:51.89	MRR:15.23	Hits@10:28.79	Best:15.23
+2024-09-19 14:01:12,502 INFO    : Snapshot:3	0	3	Epoch:1	Loss:41.287	MRR:15.95	Hits@10:29.73	Best:15.95
+2024-09-19 14:01:30,194 INFO    : Snapshot:3	0	3	Epoch:2	Loss:39.938	MRR:16.29	Hits@10:30.47	Best:16.29
+2024-09-19 14:01:47,687 INFO    : Snapshot:3	0	3	Epoch:3	Loss:39.284	MRR:16.44	Hits@10:30.72	Best:16.44
+2024-09-19 14:02:05,104 INFO    : Snapshot:3	0	3	Epoch:4	Loss:38.759	MRR:16.86	Hits@10:31.18	Best:16.86
+2024-09-19 14:02:22,428 INFO    : Snapshot:3	0	3	Epoch:5	Loss:38.472	MRR:16.91	Hits@10:31.27	Best:16.91
+2024-09-19 14:02:40,045 INFO    : Snapshot:3	0	3	Epoch:6	Loss:38.201	MRR:17.08	Hits@10:31.64	Best:17.08
+2024-09-19 14:02:57,592 INFO    : Snapshot:3	1	3	Epoch:7	Loss:37.974	MRR:17.06	Hits@10:31.49	Best:17.08
+2024-09-19 14:03:14,976 INFO    : Snapshot:3	0	3	Epoch:8	Loss:37.709	MRR:17.1	Hits@10:31.63	Best:17.1
+2024-09-19 14:03:32,668 INFO    : Snapshot:3	0	3	Epoch:9	Loss:37.607	MRR:17.3	Hits@10:32.02	Best:17.3
+2024-09-19 14:03:50,158 INFO    : Snapshot:3	0	3	Epoch:10	Loss:37.409	MRR:17.31	Hits@10:31.87	Best:17.31
+2024-09-19 14:04:07,642 INFO    : Snapshot:3	1	3	Epoch:11	Loss:37.357	MRR:17.21	Hits@10:31.72	Best:17.31
+2024-09-19 14:04:24,868 INFO    : Snapshot:3	0	3	Epoch:12	Loss:37.276	MRR:17.35	Hits@10:32.05	Best:17.35
+2024-09-19 14:04:42,880 INFO    : Snapshot:3	0	3	Epoch:13	Loss:37.185	MRR:17.41	Hits@10:32.03	Best:17.41
+2024-09-19 14:05:00,586 INFO    : Snapshot:3	1	3	Epoch:14	Loss:37.114	MRR:17.33	Hits@10:32.17	Best:17.41
+2024-09-19 14:05:18,304 INFO    : Snapshot:3	0	3	Epoch:15	Loss:37.091	MRR:17.43	Hits@10:31.92	Best:17.43
+2024-09-19 14:05:35,810 INFO    : Snapshot:3	1	3	Epoch:16	Loss:36.975	MRR:17.36	Hits@10:32.06	Best:17.43
+2024-09-19 14:05:53,472 INFO    : Snapshot:3	0	3	Epoch:17	Loss:36.96	MRR:17.45	Hits@10:32.06	Best:17.45
+2024-09-19 14:06:11,190 INFO    : Snapshot:3	1	3	Epoch:18	Loss:36.938	MRR:17.42	Hits@10:32.01	Best:17.45
+2024-09-19 14:06:29,442 INFO    : Snapshot:3	0	3	Epoch:19	Loss:36.868	MRR:17.5	Hits@10:32.2	Best:17.5
+2024-09-19 14:06:47,436 INFO    : Snapshot:3	0	3	Epoch:20	Loss:36.767	MRR:17.52	Hits@10:32.21	Best:17.52
+2024-09-19 14:07:05,299 INFO    : Snapshot:3	0	3	Epoch:21	Loss:36.774	MRR:17.57	Hits@10:32.29	Best:17.57
+2024-09-19 14:07:23,528 INFO    : Snapshot:3	1	3	Epoch:22	Loss:36.732	MRR:17.56	Hits@10:32.18	Best:17.57
+2024-09-19 14:07:41,253 INFO    : Snapshot:3	0	3	Epoch:23	Loss:36.615	MRR:17.65	Hits@10:32.36	Best:17.65
+2024-09-19 14:07:59,280 INFO    : Snapshot:3	0	3	Epoch:24	Loss:36.64	MRR:17.67	Hits@10:32.41	Best:17.67
+2024-09-19 14:08:16,652 INFO    : Snapshot:3	1	3	Epoch:25	Loss:36.635	MRR:17.67	Hits@10:32.44	Best:17.67
+2024-09-19 14:08:33,582 INFO    : Snapshot:3	2	3	Epoch:26	Loss:36.589	MRR:17.63	Hits@10:32.2	Best:17.67
+2024-09-19 14:08:50,992 INFO    : Early Stopping! Snapshot:3 Epoch: 27 Best Results: 17.67
+2024-09-19 14:08:51,093 INFO    : => loading checkpoint './checkpoint/HYBRID\3model_best.tar'
+2024-09-19 14:09:13,240 INFO    : 
++------------+--------+--------+--------+--------+---------+
+| Snapshot:3 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2543 | 0.154  | 0.3053 | 0.365  |  0.4371 |
+|     1      |  0.27  | 0.1693 | 0.3137 | 0.3787 |  0.4626 |
+|     2      | 0.1895 | 0.1156 | 0.2144 | 0.2634 |  0.3323 |
+|     3      | 0.1775 | 0.0989 | 0.2108 | 0.2607 |  0.3266 |
++------------+--------+--------+--------+--------+---------+
+2024-09-19 14:09:26,624 INFO    : Snapshot:4	0	3	Epoch:0	Loss:25.88	MRR:14.69	Hits@10:24.82	Best:14.69
+2024-09-19 14:09:33,210 INFO    : Snapshot:4	0	3	Epoch:1	Loss:23.195	MRR:15.14	Hits@10:25.31	Best:15.14
+2024-09-19 14:09:39,837 INFO    : Snapshot:4	1	3	Epoch:2	Loss:22.897	MRR:14.91	Hits@10:25.32	Best:15.14
+2024-09-19 14:09:46,564 INFO    : Snapshot:4	0	3	Epoch:3	Loss:22.82	MRR:15.16	Hits@10:25.43	Best:15.16
+2024-09-19 14:09:53,065 INFO    : Snapshot:4	0	3	Epoch:4	Loss:22.759	MRR:15.17	Hits@10:25.54	Best:15.17
+2024-09-19 14:09:59,691 INFO    : Snapshot:4	1	3	Epoch:5	Loss:22.696	MRR:14.99	Hits@10:25.4	Best:15.17
+2024-09-19 14:10:06,187 INFO    : Snapshot:4	0	3	Epoch:6	Loss:22.626	MRR:15.22	Hits@10:25.5	Best:15.22
+2024-09-19 14:10:13,115 INFO    : Snapshot:4	1	3	Epoch:7	Loss:22.635	MRR:15.1	Hits@10:25.35	Best:15.22
+2024-09-19 14:10:19,805 INFO    : Snapshot:4	2	3	Epoch:8	Loss:22.646	MRR:15.03	Hits@10:25.4	Best:15.22
+2024-09-19 14:10:26,876 INFO    : Early Stopping! Snapshot:4 Epoch: 9 Best Results: 15.22
+2024-09-19 14:10:26,978 INFO    : => loading checkpoint './checkpoint/HYBRID\4model_best.tar'
+2024-09-19 14:10:54,555 INFO    : 
++------------+--------+--------+--------+--------+---------+
+| Snapshot:4 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2543 | 0.154  | 0.3053 | 0.365  |  0.4371 |
+|     1      |  0.27  | 0.1693 | 0.3137 | 0.3787 |  0.4626 |
+|     2      | 0.1895 | 0.1156 | 0.2144 | 0.2634 |  0.3323 |
+|     3      | 0.1775 | 0.0989 | 0.2108 | 0.2607 |  0.3266 |
+|     4      | 0.1537 | 0.1021 | 0.1696 | 0.203  |  0.2537 |
++------------+--------+--------+--------+--------+---------+
+2024-09-19 14:10:54,557 INFO    : Final Result:
+[+------------+--------+--------+--------+--------+---------+
+| Snapshot:0 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2543 | 0.154  | 0.3053 | 0.365  |  0.4371 |
++------------+--------+--------+--------+--------+---------+, +------------+--------+--------+--------+--------+---------+
+| Snapshot:1 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2543 | 0.154  | 0.3053 | 0.365  |  0.4371 |
+|     1      |  0.27  | 0.1693 | 0.3137 | 0.3787 |  0.4626 |
++------------+--------+--------+--------+--------+---------+, +------------+--------+--------+--------+--------+---------+
+| Snapshot:2 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2543 | 0.154  | 0.3053 | 0.365  |  0.4371 |
+|     1      |  0.27  | 0.1693 | 0.3137 | 0.3787 |  0.4626 |
+|     2      | 0.1895 | 0.1156 | 0.2144 | 0.2634 |  0.3323 |
++------------+--------+--------+--------+--------+---------+, +------------+--------+--------+--------+--------+---------+
+| Snapshot:3 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2543 | 0.154  | 0.3053 | 0.365  |  0.4371 |
+|     1      |  0.27  | 0.1693 | 0.3137 | 0.3787 |  0.4626 |
+|     2      | 0.1895 | 0.1156 | 0.2144 | 0.2634 |  0.3323 |
+|     3      | 0.1775 | 0.0989 | 0.2108 | 0.2607 |  0.3266 |
++------------+--------+--------+--------+--------+---------+, +------------+--------+--------+--------+--------+---------+
+| Snapshot:4 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2543 | 0.154  | 0.3053 | 0.365  |  0.4371 |
+|     1      |  0.27  | 0.1693 | 0.3137 | 0.3787 |  0.4626 |
+|     2      | 0.1895 | 0.1156 | 0.2144 | 0.2634 |  0.3323 |
+|     3      | 0.1775 | 0.0989 | 0.2108 | 0.2607 |  0.3266 |
+|     4      | 0.1537 | 0.1021 | 0.1696 | 0.203  |  0.2537 |
++------------+--------+--------+--------+--------+---------+]
+2024-09-19 14:10:54,557 INFO    : Report Result:
++----------+--------------------+-----------+--------------+--------------+---------------+
+| Snapshot |        Time        | Whole_MRR | Whole_Hits@1 | Whole_Hits@3 | Whole_Hits@10 |
++----------+--------------------+-----------+--------------+--------------+---------------+
+|    0     | 41.499788761138916 |   0.254   |    0.154     |    0.305     |     0.437     |
+|    1     | 55.26251149177551  |   0.258   |    0.158     |    0.308     |     0.444     |
+|    2     | 366.6932804584503  |   0.222   |    0.136     |    0.258     |     0.385     |
+|    3     | 496.9143953323364  |   0.205   |    0.122     |     0.24     |     0.363     |
+|    4     | 69.27298378944397  |   0.198   |    0.119     |    0.231     |     0.348     |
++----------+--------------------+-----------+--------------+--------------+---------------+
+2024-09-19 14:10:54,557 INFO    : Sum_Training_Time:1029.6429598331451
+2024-09-19 14:10:54,557 INFO    : Every_Training_Time:[41.499788761138916, 55.26251149177551, 366.6932804584503, 496.9143953323364, 69.27298378944397]
+2024-09-19 14:10:54,558 INFO    : Forward transfer: 0.037375 Backward transfer: 0.0

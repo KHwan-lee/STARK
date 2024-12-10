@@ -1,0 +1,195 @@
+2024-09-02 17:17:56,353 INFO    : Namespace(batch_size=1024, data_path='./data/WN_CKGE/', dataset='WN_CKGE', debug=False, device=device(type='cuda', index=0), emb_dim=200, ent_r='150', epoch_num=200, explore=False, gpu='0', l2=0.0, learning_rate='1e-1', log_path='./logs/20240902171752/WN_CKGE', logger=<RootLogger root (INFO)>, margin=8.0, model_name='LoraKGE_Layers', multi_layers_path='train_sorted_by_edges_betweenness.txt', neg_ratio=10, note='', num_ent_layers='2', num_layer=1, num_rel_layers='1', patience=3, predict_result=False, r=100, r_fixed=True, random_seed=3407, record=False, rel_r='20', save_path='./checkpoint/WN_CKGE', skip_previous='False', snapshot_num=5, train_new=True, using_multi_layers=False, using_various_ranks='True', using_various_ranks_reverse=False, valid_metrics='mrr')
+2024-09-02 17:18:08,271 INFO    : Snapshot:0	0	3	Epoch:0	Loss:41.777	MRR:1.24	Hits@10:3.14	Best:1.24
+2024-09-02 17:18:19,529 INFO    : Snapshot:0	0	3	Epoch:1	Loss:21.959	MRR:9.65	Hits@10:22.46	Best:9.65
+2024-09-02 17:18:30,939 INFO    : Snapshot:0	0	3	Epoch:2	Loss:11.347	MRR:13.06	Hits@10:29.25	Best:13.06
+2024-09-02 17:18:42,025 INFO    : Snapshot:0	0	3	Epoch:3	Loss:7.0	MRR:14.29	Hits@10:31.47	Best:14.29
+2024-09-02 17:18:53,147 INFO    : Snapshot:0	0	3	Epoch:4	Loss:4.735	MRR:14.92	Hits@10:32.62	Best:14.92
+2024-09-02 17:19:04,226 INFO    : Snapshot:0	0	3	Epoch:5	Loss:3.363	MRR:15.33	Hits@10:33.54	Best:15.33
+2024-09-02 17:19:15,188 INFO    : Snapshot:0	0	3	Epoch:6	Loss:2.454	MRR:15.67	Hits@10:34.35	Best:15.67
+2024-09-02 17:19:26,218 INFO    : Snapshot:0	0	3	Epoch:7	Loss:1.806	MRR:15.93	Hits@10:34.96	Best:15.93
+2024-09-02 17:19:37,247 INFO    : Snapshot:0	0	3	Epoch:8	Loss:1.367	MRR:16.23	Hits@10:35.76	Best:16.23
+2024-09-02 17:19:48,217 INFO    : Snapshot:0	0	3	Epoch:9	Loss:1.056	MRR:16.45	Hits@10:36.23	Best:16.45
+2024-09-02 17:19:59,369 INFO    : Snapshot:0	0	3	Epoch:10	Loss:0.816	MRR:16.64	Hits@10:36.68	Best:16.64
+2024-09-02 17:20:10,526 INFO    : Snapshot:0	0	3	Epoch:11	Loss:0.624	MRR:16.83	Hits@10:37.25	Best:16.83
+2024-09-02 17:20:21,665 INFO    : Snapshot:0	0	3	Epoch:12	Loss:0.505	MRR:16.9	Hits@10:37.74	Best:16.9
+2024-09-02 17:20:32,839 INFO    : Snapshot:0	0	3	Epoch:13	Loss:0.399	MRR:16.93	Hits@10:37.97	Best:16.93
+2024-09-02 17:20:43,897 INFO    : Snapshot:0	1	3	Epoch:14	Loss:0.335	MRR:16.93	Hits@10:38.19	Best:16.93
+2024-09-02 17:20:54,959 INFO    : Snapshot:0	0	3	Epoch:15	Loss:0.279	MRR:17.06	Hits@10:38.67	Best:17.06
+2024-09-02 17:21:05,980 INFO    : Snapshot:0	1	3	Epoch:16	Loss:0.236	MRR:17.04	Hits@10:38.78	Best:17.06
+2024-09-02 17:21:16,914 INFO    : Snapshot:0	0	3	Epoch:17	Loss:0.22	MRR:17.08	Hits@10:39.0	Best:17.08
+2024-09-02 17:21:27,954 INFO    : Snapshot:0	0	3	Epoch:18	Loss:0.188	MRR:17.12	Hits@10:39.1	Best:17.12
+2024-09-02 17:21:38,942 INFO    : Snapshot:0	1	3	Epoch:19	Loss:0.177	MRR:17.1	Hits@10:39.27	Best:17.12
+2024-09-02 17:21:49,839 INFO    : Snapshot:0	2	3	Epoch:20	Loss:0.158	MRR:17.08	Hits@10:39.43	Best:17.12
+2024-09-02 17:22:00,946 INFO    : Snapshot:0	0	3	Epoch:21	Loss:0.149	MRR:17.14	Hits@10:39.47	Best:17.14
+2024-09-02 17:22:12,100 INFO    : Snapshot:0	1	3	Epoch:22	Loss:0.143	MRR:17.07	Hits@10:39.57	Best:17.14
+2024-09-02 17:22:23,107 INFO    : Snapshot:0	2	3	Epoch:23	Loss:0.133	MRR:17.13	Hits@10:39.69	Best:17.14
+2024-09-02 17:22:34,205 INFO    : Snapshot:0	0	3	Epoch:24	Loss:0.12	MRR:17.18	Hits@10:40.0	Best:17.18
+2024-09-02 17:22:45,184 INFO    : Snapshot:0	0	3	Epoch:25	Loss:0.121	MRR:17.22	Hits@10:39.94	Best:17.22
+2024-09-02 17:22:56,309 INFO    : Snapshot:0	1	3	Epoch:26	Loss:0.115	MRR:17.16	Hits@10:40.12	Best:17.22
+2024-09-02 17:23:07,388 INFO    : Snapshot:0	2	3	Epoch:27	Loss:0.108	MRR:17.15	Hits@10:40.24	Best:17.22
+2024-09-02 17:23:18,429 INFO    : Early Stopping! Snapshot:0 Epoch: 28 Best Results: 17.22
+2024-09-02 17:23:18,466 INFO    : => loading checkpoint './checkpoint/WN_CKGE\0model_best.tar'
+2024-09-02 17:23:27,136 INFO    : 
++------------+--------+--------+--------+--------+---------+
+| Snapshot:0 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.1722 |  0.01  | 0.3114 | 0.354  |  0.3996 |
++------------+--------+--------+--------+--------+---------+
+2024-09-02 17:23:46,004 INFO    : Snapshot:1	0	3	Epoch:0	Loss:6.32	MRR:5.56	Hits@10:14.38	Best:5.56
+2024-09-02 17:23:54,053 INFO    : Snapshot:1	0	3	Epoch:1	Loss:2.845	MRR:8.94	Hits@10:23.98	Best:8.94
+2024-09-02 17:24:02,072 INFO    : Snapshot:1	0	3	Epoch:2	Loss:1.368	MRR:11.32	Hits@10:28.25	Best:11.32
+2024-09-02 17:24:10,090 INFO    : Snapshot:1	0	3	Epoch:3	Loss:0.81	MRR:12.55	Hits@10:30.59	Best:12.55
+2024-09-02 17:24:18,128 INFO    : Snapshot:1	0	3	Epoch:4	Loss:0.564	MRR:12.95	Hits@10:31.56	Best:12.95
+2024-09-02 17:24:26,162 INFO    : Snapshot:1	0	3	Epoch:5	Loss:0.439	MRR:13.41	Hits@10:32.55	Best:13.41
+2024-09-02 17:24:34,190 INFO    : Snapshot:1	0	3	Epoch:6	Loss:0.379	MRR:13.5	Hits@10:32.53	Best:13.5
+2024-09-02 17:24:42,206 INFO    : Snapshot:1	0	3	Epoch:7	Loss:0.33	MRR:13.76	Hits@10:32.8	Best:13.76
+2024-09-02 17:24:50,229 INFO    : Snapshot:1	0	3	Epoch:8	Loss:0.296	MRR:13.87	Hits@10:32.9	Best:13.87
+2024-09-02 17:24:58,261 INFO    : Snapshot:1	0	3	Epoch:9	Loss:0.276	MRR:13.95	Hits@10:33.15	Best:13.95
+2024-09-02 17:25:06,256 INFO    : Snapshot:1	0	3	Epoch:10	Loss:0.258	MRR:14.09	Hits@10:33.33	Best:14.09
+2024-09-02 17:25:14,184 INFO    : Snapshot:1	0	3	Epoch:11	Loss:0.244	MRR:14.2	Hits@10:33.31	Best:14.2
+2024-09-02 17:25:22,074 INFO    : Snapshot:1	1	3	Epoch:12	Loss:0.234	MRR:14.18	Hits@10:33.47	Best:14.2
+2024-09-02 17:25:29,982 INFO    : Snapshot:1	0	3	Epoch:13	Loss:0.227	MRR:14.28	Hits@10:33.52	Best:14.28
+2024-09-02 17:25:37,898 INFO    : Snapshot:1	0	3	Epoch:14	Loss:0.215	MRR:14.31	Hits@10:33.82	Best:14.31
+2024-09-02 17:25:45,794 INFO    : Snapshot:1	1	3	Epoch:15	Loss:0.214	MRR:14.25	Hits@10:33.66	Best:14.31
+2024-09-02 17:25:53,734 INFO    : Snapshot:1	2	3	Epoch:16	Loss:0.21	MRR:14.27	Hits@10:33.49	Best:14.31
+2024-09-02 17:26:01,641 INFO    : Early Stopping! Snapshot:1 Epoch: 17 Best Results: 14.31
+2024-09-02 17:26:01,680 INFO    : => loading checkpoint './checkpoint/WN_CKGE\1model_best.tar'
+2024-09-02 17:26:18,295 INFO    : 
++------------+--------+--------+--------+--------+---------+
+| Snapshot:1 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.1722 |  0.01  | 0.3114 | 0.354  |  0.3996 |
+|     1      | 0.1408 | 0.0108 | 0.2419 | 0.2922 |  0.3328 |
++------------+--------+--------+--------+--------+---------+
+2024-09-02 17:26:55,574 INFO    : Snapshot:2	0	3	Epoch:0	Loss:6.289	MRR:5.08	Hits@10:13.06	Best:5.08
+2024-09-02 17:27:12,060 INFO    : Snapshot:2	0	3	Epoch:1	Loss:2.794	MRR:8.52	Hits@10:21.94	Best:8.52
+2024-09-02 17:27:28,709 INFO    : Snapshot:2	0	3	Epoch:2	Loss:1.279	MRR:10.62	Hits@10:25.97	Best:10.62
+2024-09-02 17:27:45,361 INFO    : Snapshot:2	0	3	Epoch:3	Loss:0.734	MRR:11.66	Hits@10:27.9	Best:11.66
+2024-09-02 17:28:01,816 INFO    : Snapshot:2	0	3	Epoch:4	Loss:0.515	MRR:12.35	Hits@10:28.71	Best:12.35
+2024-09-02 17:28:18,279 INFO    : Snapshot:2	0	3	Epoch:5	Loss:0.408	MRR:12.51	Hits@10:29.11	Best:12.51
+2024-09-02 17:28:34,744 INFO    : Snapshot:2	0	3	Epoch:6	Loss:0.338	MRR:12.72	Hits@10:29.52	Best:12.72
+2024-09-02 17:28:51,212 INFO    : Snapshot:2	0	3	Epoch:7	Loss:0.303	MRR:12.9	Hits@10:29.68	Best:12.9
+2024-09-02 17:29:07,682 INFO    : Snapshot:2	0	3	Epoch:8	Loss:0.266	MRR:12.99	Hits@10:29.73	Best:12.99
+2024-09-02 17:29:24,117 INFO    : Snapshot:2	1	3	Epoch:9	Loss:0.247	MRR:12.99	Hits@10:29.78	Best:12.99
+2024-09-02 17:29:40,555 INFO    : Snapshot:2	2	3	Epoch:10	Loss:0.229	MRR:12.99	Hits@10:29.76	Best:12.99
+2024-09-02 17:29:57,019 INFO    : Snapshot:2	0	3	Epoch:11	Loss:0.214	MRR:13.01	Hits@10:29.84	Best:13.01
+2024-09-02 17:30:13,512 INFO    : Snapshot:2	0	3	Epoch:12	Loss:0.209	MRR:13.06	Hits@10:30.03	Best:13.06
+2024-09-02 17:30:29,982 INFO    : Snapshot:2	0	3	Epoch:13	Loss:0.198	MRR:13.11	Hits@10:30.11	Best:13.11
+2024-09-02 17:30:46,448 INFO    : Snapshot:2	0	3	Epoch:14	Loss:0.195	MRR:13.19	Hits@10:30.16	Best:13.19
+2024-09-02 17:31:02,905 INFO    : Snapshot:2	0	3	Epoch:15	Loss:0.187	MRR:13.23	Hits@10:30.11	Best:13.23
+2024-09-02 17:31:19,359 INFO    : Snapshot:2	0	3	Epoch:16	Loss:0.186	MRR:13.24	Hits@10:30.24	Best:13.24
+2024-09-02 17:31:35,829 INFO    : Snapshot:2	0	3	Epoch:17	Loss:0.178	MRR:13.25	Hits@10:30.27	Best:13.25
+2024-09-02 17:31:52,272 INFO    : Snapshot:2	1	3	Epoch:18	Loss:0.176	MRR:13.19	Hits@10:30.16	Best:13.25
+2024-09-02 17:32:08,754 INFO    : Snapshot:2	0	3	Epoch:19	Loss:0.171	MRR:13.27	Hits@10:29.97	Best:13.27
+2024-09-02 17:32:25,234 INFO    : Snapshot:2	0	3	Epoch:20	Loss:0.168	MRR:13.3	Hits@10:30.08	Best:13.3
+2024-09-02 17:32:41,659 INFO    : Snapshot:2	1	3	Epoch:21	Loss:0.17	MRR:13.2	Hits@10:30.16	Best:13.3
+2024-09-02 17:32:58,067 INFO    : Snapshot:2	2	3	Epoch:22	Loss:0.164	MRR:13.19	Hits@10:30.3	Best:13.3
+2024-09-02 17:33:14,507 INFO    : Early Stopping! Snapshot:2 Epoch: 23 Best Results: 13.3
+2024-09-02 17:33:14,553 INFO    : => loading checkpoint './checkpoint/WN_CKGE\2model_best.tar'
+2024-09-02 17:33:47,776 INFO    : 
++------------+--------+--------+--------+--------+---------+
+| Snapshot:2 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.1722 |  0.01  | 0.3114 | 0.354  |  0.3996 |
+|     1      | 0.1408 | 0.0108 | 0.2419 | 0.2922 |  0.3328 |
+|     2      |  0.14  | 0.014  | 0.2409 | 0.282  |  0.3196 |
++------------+--------+--------+--------+--------+---------+
+2024-09-02 17:34:29,785 INFO    : Snapshot:3	0	3	Epoch:0	Loss:6.31	MRR:4.48	Hits@10:11.99	Best:4.48
+2024-09-02 17:34:48,550 INFO    : Snapshot:3	0	3	Epoch:1	Loss:2.759	MRR:7.87	Hits@10:20.11	Best:7.87
+2024-09-02 17:35:07,314 INFO    : Snapshot:3	0	3	Epoch:2	Loss:1.243	MRR:10.11	Hits@10:24.27	Best:10.11
+2024-09-02 17:35:26,096 INFO    : Snapshot:3	0	3	Epoch:3	Loss:0.712	MRR:11.12	Hits@10:26.26	Best:11.12
+2024-09-02 17:35:45,047 INFO    : Snapshot:3	0	3	Epoch:4	Loss:0.506	MRR:11.74	Hits@10:27.34	Best:11.74
+2024-09-02 17:36:03,789 INFO    : Snapshot:3	0	3	Epoch:5	Loss:0.396	MRR:11.94	Hits@10:27.34	Best:11.94
+2024-09-02 17:36:22,511 INFO    : Snapshot:3	0	3	Epoch:6	Loss:0.332	MRR:12.13	Hits@10:27.74	Best:12.13
+2024-09-02 17:36:40,484 INFO    : Snapshot:3	0	3	Epoch:7	Loss:0.289	MRR:12.18	Hits@10:28.17	Best:12.18
+2024-09-02 17:36:58,274 INFO    : Snapshot:3	0	3	Epoch:8	Loss:0.265	MRR:12.32	Hits@10:28.31	Best:12.32
+2024-09-02 17:37:16,095 INFO    : Snapshot:3	0	3	Epoch:9	Loss:0.246	MRR:12.41	Hits@10:28.39	Best:12.41
+2024-09-02 17:37:33,793 INFO    : Snapshot:3	1	3	Epoch:10	Loss:0.229	MRR:12.38	Hits@10:28.25	Best:12.41
+2024-09-02 17:37:51,468 INFO    : Snapshot:3	2	3	Epoch:11	Loss:0.218	MRR:12.36	Hits@10:28.23	Best:12.41
+2024-09-02 17:38:09,002 INFO    : Snapshot:3	0	3	Epoch:12	Loss:0.207	MRR:12.43	Hits@10:28.31	Best:12.43
+2024-09-02 17:38:26,783 INFO    : Snapshot:3	0	3	Epoch:13	Loss:0.198	MRR:12.49	Hits@10:28.39	Best:12.49
+2024-09-02 17:38:44,483 INFO    : Snapshot:3	0	3	Epoch:14	Loss:0.195	MRR:12.53	Hits@10:28.49	Best:12.53
+2024-09-02 17:39:02,274 INFO    : Snapshot:3	0	3	Epoch:15	Loss:0.187	MRR:12.62	Hits@10:28.47	Best:12.62
+2024-09-02 17:39:19,951 INFO    : Snapshot:3	1	3	Epoch:16	Loss:0.186	MRR:12.5	Hits@10:28.31	Best:12.62
+2024-09-02 17:39:37,626 INFO    : Snapshot:3	2	3	Epoch:17	Loss:0.182	MRR:12.51	Hits@10:28.36	Best:12.62
+2024-09-02 17:39:55,192 INFO    : Early Stopping! Snapshot:3 Epoch: 18 Best Results: 12.62
+2024-09-02 17:39:55,241 INFO    : => loading checkpoint './checkpoint/WN_CKGE\3model_best.tar'
+2024-09-02 17:40:45,984 INFO    : 
++------------+--------+--------+--------+--------+---------+
+| Snapshot:3 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.1722 |  0.01  | 0.3114 | 0.354  |  0.3996 |
+|     1      | 0.1408 | 0.0108 | 0.2419 | 0.2922 |  0.3328 |
+|     2      |  0.14  | 0.014  | 0.2409 | 0.282  |  0.3196 |
+|     3      | 0.1311 | 0.0116 | 0.2274 | 0.2626 |  0.3043 |
++------------+--------+--------+--------+--------+---------+
+2024-09-02 17:40:54,974 INFO    : Snapshot:4	0	3	Epoch:0	Loss:6.227	MRR:10.54	Hits@10:24.84	Best:10.54
+2024-09-02 17:40:57,921 INFO    : Snapshot:4	0	3	Epoch:1	Loss:2.664	MRR:11.85	Hits@10:27.8	Best:11.85
+2024-09-02 17:41:00,881 INFO    : Snapshot:4	0	3	Epoch:2	Loss:1.17	MRR:12.69	Hits@10:29.06	Best:12.69
+2024-09-02 17:41:03,813 INFO    : Snapshot:4	0	3	Epoch:3	Loss:0.646	MRR:13.09	Hits@10:29.84	Best:13.09
+2024-09-02 17:41:06,780 INFO    : Snapshot:4	0	3	Epoch:4	Loss:0.448	MRR:13.28	Hits@10:30.22	Best:13.28
+2024-09-02 17:41:09,726 INFO    : Snapshot:4	0	3	Epoch:5	Loss:0.357	MRR:13.42	Hits@10:30.27	Best:13.42
+2024-09-02 17:41:12,668 INFO    : Snapshot:4	0	3	Epoch:6	Loss:0.3	MRR:13.49	Hits@10:30.48	Best:13.49
+2024-09-02 17:41:15,593 INFO    : Snapshot:4	0	3	Epoch:7	Loss:0.258	MRR:13.6	Hits@10:30.7	Best:13.6
+2024-09-02 17:41:18,525 INFO    : Snapshot:4	0	3	Epoch:8	Loss:0.239	MRR:13.69	Hits@10:30.65	Best:13.69
+2024-09-02 17:41:21,451 INFO    : Snapshot:4	1	3	Epoch:9	Loss:0.219	MRR:13.69	Hits@10:30.73	Best:13.69
+2024-09-02 17:41:24,529 INFO    : Snapshot:4	0	3	Epoch:10	Loss:0.207	MRR:13.7	Hits@10:30.73	Best:13.7
+2024-09-02 17:41:27,585 INFO    : Snapshot:4	1	3	Epoch:11	Loss:0.197	MRR:13.68	Hits@10:30.62	Best:13.7
+2024-09-02 17:41:30,558 INFO    : Snapshot:4	2	3	Epoch:12	Loss:0.186	MRR:13.65	Hits@10:30.59	Best:13.7
+2024-09-02 17:41:33,519 INFO    : Early Stopping! Snapshot:4 Epoch: 13 Best Results: 13.7
+2024-09-02 17:41:33,555 INFO    : => loading checkpoint './checkpoint/WN_CKGE\4model_best.tar'
+2024-09-02 17:41:51,683 INFO    : 
++------------+--------+--------+--------+--------+---------+
+| Snapshot:4 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.1722 |  0.01  | 0.3114 | 0.354  |  0.3996 |
+|     1      | 0.1408 | 0.0108 | 0.2419 | 0.2922 |  0.3328 |
+|     2      |  0.14  | 0.014  | 0.2409 | 0.282  |  0.3196 |
+|     3      | 0.1311 | 0.0116 | 0.2274 | 0.2626 |  0.3043 |
+|     4      | 0.1454 | 0.0097 | 0.2628 | 0.291  |  0.3272 |
++------------+--------+--------+--------+--------+---------+
+2024-09-02 17:41:51,684 INFO    : Final Result:
+[+------------+--------+--------+--------+--------+---------+
+| Snapshot:0 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.1722 |  0.01  | 0.3114 | 0.354  |  0.3996 |
++------------+--------+--------+--------+--------+---------+, +------------+--------+--------+--------+--------+---------+
+| Snapshot:1 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.1722 |  0.01  | 0.3114 | 0.354  |  0.3996 |
+|     1      | 0.1408 | 0.0108 | 0.2419 | 0.2922 |  0.3328 |
++------------+--------+--------+--------+--------+---------+, +------------+--------+--------+--------+--------+---------+
+| Snapshot:2 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.1722 |  0.01  | 0.3114 | 0.354  |  0.3996 |
+|     1      | 0.1408 | 0.0108 | 0.2419 | 0.2922 |  0.3328 |
+|     2      |  0.14  | 0.014  | 0.2409 | 0.282  |  0.3196 |
++------------+--------+--------+--------+--------+---------+, +------------+--------+--------+--------+--------+---------+
+| Snapshot:3 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.1722 |  0.01  | 0.3114 | 0.354  |  0.3996 |
+|     1      | 0.1408 | 0.0108 | 0.2419 | 0.2922 |  0.3328 |
+|     2      |  0.14  | 0.014  | 0.2409 | 0.282  |  0.3196 |
+|     3      | 0.1311 | 0.0116 | 0.2274 | 0.2626 |  0.3043 |
++------------+--------+--------+--------+--------+---------+, +------------+--------+--------+--------+--------+---------+
+| Snapshot:4 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.1722 |  0.01  | 0.3114 | 0.354  |  0.3996 |
+|     1      | 0.1408 | 0.0108 | 0.2419 | 0.2922 |  0.3328 |
+|     2      |  0.14  | 0.014  | 0.2409 | 0.282  |  0.3196 |
+|     3      | 0.1311 | 0.0116 | 0.2274 | 0.2626 |  0.3043 |
+|     4      | 0.1454 | 0.0097 | 0.2628 | 0.291  |  0.3272 |
++------------+--------+--------+--------+--------+---------+]
+2024-09-02 17:41:51,685 INFO    : Report Result:
++----------+--------------------+-----------+--------------+--------------+---------------+
+| Snapshot |        Time        | Whole_MRR | Whole_Hits@1 | Whole_Hits@3 | Whole_Hits@10 |
++----------+--------------------+-----------+--------------+--------------+---------------+
+|    0     | 322.07740235328674 |   0.172   |     0.01     |    0.311     |      0.4      |
+|    1     | 144.27806758880615 |   0.168   |     0.01     |    0.301     |      0.39     |
+|    2     | 396.0659353733063  |   0.164   |    0.011     |    0.294     |     0.381     |
+|    3     | 344.76641964912415 |   0.161   |    0.011     |    0.287     |     0.373     |
+|    4     | 42.02438569068909  |   0.159   |    0.011     |    0.284     |     0.368     |
++----------+--------------------+-----------+--------------+--------------+---------------+
+2024-09-02 17:41:51,685 INFO    : Sum_Training_Time:1249.2122106552124
+2024-09-02 17:41:51,685 INFO    : Every_Training_Time:[322.07740235328674, 144.27806758880615, 396.0659353733063, 344.76641964912415, 42.02438569068909]
+2024-09-02 17:41:51,685 INFO    : Forward transfer: 0.05995 Backward transfer: 0.0
