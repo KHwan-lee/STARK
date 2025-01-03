@@ -24,7 +24,7 @@ class LoraKGE_Layers(BaseModel):
         all_new_entities = {}
         for _ in range(self.kg.snapshots[self.args.snapshot].num_ent, self.kg.snapshots[self.args.snapshot + 1].num_ent):
             all_new_entities[_] = (0, 0)
-        nodes_ordered_path = f"./data/{self.args.dataset}/{self.args.snapshot + 1}/train_distance_nodes.txt"
+        nodes_ordered_path = f"./data/{self.args.dataset}/{self.args.snapshot + 1}/train_distance_nodes2.txt"
         with open(nodes_ordered_path, "r", encoding="utf-8") as f:
             lines = list(f.readlines())
             for line in lines:
@@ -32,17 +32,19 @@ class LoraKGE_Layers(BaseModel):
                 line_list = line.split("\t")
                 node, distance, score = int(line_list[0]), int(line_list[1]), float(line_list[2])
                 if node in all_new_entities:
-                    print(f"Node {node} | Distance: {distance} | Score: {score}")  # 추가된 디버그 출력
+                    # 추가된 디버그 출력
+                    # print(f"Node {node} | Distance: {distance} | Score: {score}") 
                     all_new_entities[node] = (distance, score)
         # 수정한 부분
-        all_new_entities = dict(sorted(all_new_entities.items(), key = lambda kv:(kv[1][1])))
+        #all_new_entities = dict(sorted(all_new_entities.items(), key = lambda kv:(kv[1][0], kv[1][1])))
+        all_new_entities = dict(sorted(all_new_entities.items(), key = lambda kv:(-kv[1][1]), reverse=True))
         
         self.all_new_entities = all_new_entities
         all_new_entities = list(all_new_entities.keys())
 
         # 디버깅용 출력: 정렬 후의 값 확인
-        for node, (distance, score) in self.all_new_entities.items():
-            print(f"Sorted Node {node} | Distance: {distance} | Score: {score}")
+        # for node, (distance, score) in self.all_new_entities.items():
+          #  print(f"Sorted Node {node} | Distance: {distance} | Score: {score}")
         
         return all_new_entities
 
@@ -52,7 +54,8 @@ class LoraKGE_Layers(BaseModel):
         new_rel_embeddings_len = self.kg.snapshots[self.args.snapshot + 1].num_rel - self.kg.snapshots[self.args.snapshot].num_rel
         self.lora_ent_len = (new_ent_embeddings_len + int(self.args.num_ent_layers) - 1) // int(self.args.num_ent_layers)
         tmp_r = self.args.ent_r
-        self.args.ent_r = (self.lora_ent_len // 20) if (self.lora_ent_len // 20) > int(self.args.ent_r) else self.args.ent_r
+        # 이것도 빼야 맞는듯
+        # self.args.ent_r = (self.lora_ent_len // 20) if (self.lora_ent_len // 20) > int(self.args.ent_r) else self.args.ent_r
 
         # check
         print(str(self.args.ent_r) + "\n")
@@ -67,8 +70,10 @@ class LoraKGE_Layers(BaseModel):
             for i_layer in range(int(self.args.num_ent_layers)):
                 self.args.ent_r_list.append(sum(ent_node_list[i_layer * self.lora_ent_len: (i_layer + 1) * self.lora_ent_len]))
             average_nodes = sum(self.args.ent_r_list) / len(self.args.ent_r_list)
-            r_threshold = int(int(self.args.ent_r) * 0.9)
+            # 이거 0.9로 잡은건 너무 주작인거 같음..
+            r_threshold = int(int(self.args.ent_r) * 0.25)
             self.args.ent_r_list = [int(self.args.ent_r) * i / average_nodes if int(self.args.ent_r) * i / average_nodes > r_threshold else r_threshold for i in self.args.ent_r_list]
+            # 이건 왜 2번 반복되는가? -> 실수라고 함
             self.args.ent_r_list = [int(i) for i in self.args.ent_r_list]
             self.args.ent_r_list = [int(i) for i in self.args.ent_r_list]
             self.args.ent_r_list = [i if i else 1 for i in self.args.ent_r_list]

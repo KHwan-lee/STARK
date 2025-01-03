@@ -175,7 +175,7 @@ class Snapshot():
         self.new_entities = []
 
 def solve_network():
-    dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
+    dataset_names = ["FB_CKGE", "WN_CKGE"]
     for data_name in dataset_names:
         data_path = f"./data/{data_name}/"
         for i in tqdm(range(5)):
@@ -188,19 +188,80 @@ def solve_network():
                     h = int(line_list[0])
                     t = int(line_list[2])
                     g.add_edge(h, t)
-            nodes_degree_dict = nx.degree_centrality(g)
+            
+            # # 원래 방식은 그냥 차수 계산
+            # nodes_degree_dict = nx.degree_centrality(g)
+            # nodes_degree_path = data_path + str(i) + "/train_nodes_degree.txt"
+            # with open(nodes_degree_path, "w", encoding="utf-8") as wf:
+            #     for k, v in nodes_degree_dict.items():
+            #         wf.write(str(k))
+            #         wf.write("\t")
+            #         wf.write(str(v))
+            #         wf.write("\n")
+            
+            # new method
+            # 노드의 중심도 계산
+            degree_centrality = nx.degree_centrality(g)
+
+            # 1-hop 이웃의 중심도 합 계산
+            neighbor_centrality_sum = {}
+            for node in g.nodes:
+                # 각 노드의 1-hop 이웃 탐색
+                neighbors = list(g.neighbors(node))
+                node_degree = len(list(g.neighbors(node)))
+                # 이웃들의 중심도 합산
+                neighbor_centrality_sum[node] = sum(degree_centrality[neighbor] for neighbor in neighbors) * node_degree
+
+            # 결과 저장
             nodes_degree_path = data_path + str(i) + "/train_nodes_degree.txt"
             with open(nodes_degree_path, "w", encoding="utf-8") as wf:
-                for k, v in nodes_degree_dict.items():
-                    wf.write(str(k))
-                    wf.write("\t")
-                    wf.write(str(v))
-                    wf.write("\n")
+                for node, centrality_sum in neighbor_centrality_sum.items():
+                    wf.write(f"{node}\t{centrality_sum}\n")
+
+def solve_network_with_betweenness_weighted_pagerank():
+    dataset_names = ["FB_CKGE", "WN_CKGE"]
+    for data_name in dataset_names:
+        data_path = f"./data/{data_name}/"
+        for i in tqdm(range(5)):
+            g = nx.DiGraph()  # Use directed graph to allow weighted edges
+            file_path = data_path + str(i) + "/train_id.txt"
+            with open(file_path, "r", encoding="utf-8") as rf:
+                for line in rf.readlines():
+                    line = line.strip()
+                    line_list = line.split("\t")
+                    h = int(line_list[0])
+                    t = int(line_list[2])
+                    g.add_edge(h, t)
+
+            # Calculate edge betweenness centrality
+            edge_betweenness = nx.edge_betweenness_centrality(g)
+
+            # Assign betweenness centrality as edge weights
+            for u, v in g.edges():
+                g[u][v]['weight'] = edge_betweenness.get((u, v), 1.0)
+
+            # 초기 중요도를 차수로 설정(원래는 다 동일함)
+            degree_centrality = g.degree()
+            initial_importance = {node: degree for node, degree in degree_centrality}
+
+            # Normalize the initial importance values
+            total_importance = sum(initial_importance.values())
+            initial_importance = {node: importance / total_importance for node, importance in initial_importance.items()}
+
+            # Calculate PageRank with edge betweenness weights
+            pagerank_centrality = nx.pagerank(g, alpha=0.5, weight='weight')
+
+            # Save the weighted PageRank values to a file
+            nodes_pagerank_path = data_path + str(i) + "/train_nodes_pagerank.txt"
+            with open(nodes_pagerank_path, "w", encoding="utf-8") as wf:
+                for node, centrality in pagerank_centrality.items():
+                    wf.write(f"{node}\t{centrality}\n")
 
 if __name__ == "__main__":
 
-    #data_name = "FB_CKGE"
-    dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
+    # dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
+    dataset_names = ["FB_CKGE",  "WN_CKGE"]
     for data_name in dataset_names:
         kg = KnowledgeGraph(data_name)
-    solve_network()
+    #solve_network()
+    solve_network_with_betweenness_weighted_pagerank()

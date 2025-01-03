@@ -45,6 +45,7 @@ class TrainDatasetMarginLoss(Dataset):
         random corrupt heads and tails
         1 pos + 10 neg = 11 samples
         """
+        # 정수로 타입 다시 바꿈 (에러 해결)
         neg_h = np.random.randint(0, self.kg.snapshots[ss_id].num_ent - 1, self.args.neg_ratio)
         neg_t = np.random.randint(0, self.kg.snapshots[ss_id].num_ent - 1, self.args.neg_ratio)
         pos_h = np.ones_like(neg_h) * h

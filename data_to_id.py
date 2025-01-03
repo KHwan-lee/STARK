@@ -225,6 +225,7 @@ def solve_network(data_name):
                 wf.write("\n")
 
 if __name__ == "__main__":
-    data_name = "FB_CKGE"
-    kg = KnowledgeGraph(data_name)
+    data_names = ["WN_CKGE", "FB_CKGE"]
+    for data in data_names:
+        kg = KnowledgeGraph(data)
     # solve_network(data_name)
