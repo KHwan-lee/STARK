@@ -5,8 +5,8 @@
 import os
 
 def nodes_sort():
-    # dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
-    dataset_names = ["FB_CKGE", "WN_CKGE"]
+    dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
+    # dataset_names = ["FB_CKGE", "WN_CKGE"]
     base_path = "./data/"
     for dataset_name in dataset_names:
         seen_entities = set()
@@ -68,6 +68,7 @@ def nodes_sort():
                                 entities_sorted[int(entity)] = (100, float(nodes))
                                 # 얘네도 본것으로 처리를 해야함
                                 seen_entities.add(int(entity))
+            
             # 새로운 기준을 저장할 파일
             # train_distance_nodes_path = os.path.join(true_path_snapshot, "train_distance_nodes.txt")
             train_distance_nodes_path = os.path.join(true_path_snapshot, "train_distance_nodes2.txt")

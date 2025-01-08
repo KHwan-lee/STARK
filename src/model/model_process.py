@@ -23,6 +23,9 @@ class TrainBatchProcessor():
             if model.lora_ent_embeddings_list != None:
                 for lora_model in model.lora_ent_embeddings_list:
                     lora_model.train(True)
+            if model.lora_edge_embeddings_list != None:
+                for lora_model in model.lora_edge_embeddings_list:
+                    lora_model.train(True)
         """ Start training """
         total_loss = 0.0
         if self.args.record:
@@ -73,6 +76,9 @@ class DevBatchProcessor():
         if self.args.model_name == "LoraKGE_Layers" and self.args.using_various_ranks or self.args.using_various_ranks_reverse:
             if model.lora_ent_embeddings_list != None:
                 for lora_model in model.lora_ent_embeddings_list:
+                    lora_model.train(False)
+            if model.lora_edge_embeddings_list != None:
+                for lora_model in model.lora_edge_embeddings_list:
                     lora_model.train(False)
         num = 0
         results = {}

@@ -219,23 +219,56 @@ def solve_network():
                     wf.write(f"{node}\t{centrality_sum}\n")
 
 def solve_network_with_betweenness_weighted_pagerank():
-    dataset_names = ["FB_CKGE", "WN_CKGE"]
+    dataset_names = ["WN_CKGE", "FB_CKGE", "ENTITY", 'FACT', 'HYBRID', 'RELATION']
     for data_name in dataset_names:
         data_path = f"./data/{data_name}/"
         for i in tqdm(range(5)):
             g = nx.DiGraph()  # Use directed graph to allow weighted edges
+            relation_betweenness = {}
+            relation_count = {}
+
             file_path = data_path + str(i) + "/train_id.txt"
             with open(file_path, "r", encoding="utf-8") as rf:
                 for line in rf.readlines():
                     line = line.strip()
                     line_list = line.split("\t")
                     h = int(line_list[0])
+                    r = int(line_list[1])
                     t = int(line_list[2])
                     g.add_edge(h, t)
 
+                    if r not in relation_betweenness:
+                        relation_betweenness[r] = 0.0
+                        relation_count[r] = 0
+            
             # Calculate edge betweenness centrality
             edge_betweenness = nx.edge_betweenness_centrality(g)
 
+            # Save edge betweenness to file
+            edges_betweenness_path = data_path + str(i) + "/train_edges_betweenness.txt"
+            with open(edges_betweenness_path, "w", encoding="utf-8") as wf:
+                for (u, v), betweenness in edge_betweenness.items():
+                    wf.write(f"{u}\t{v}\t{betweenness}\n")
+            # Assign betweenness centrality to relations
+            with open(file_path, "r", encoding="utf-8") as rf:
+                for line in rf.readlines():
+                    h, r, t = map(int, line.strip().split("\t"))
+                    if (h, t) in edge_betweenness:
+                        relation_betweenness[r] += edge_betweenness[(h, t)]
+                        relation_count[r] += 1
+
+            # Compute average betweenness for each relation ID
+            relation_betweenness_avg = {
+                r: (relation_betweenness[r] / relation_count[r] if relation_count[r] > 0 else 0.0)
+                for r in relation_betweenness
+            }
+
+            # Save relation-based betweenness averages to file
+            relations_betweenness_path = data_path + str(i) + "/train_relation_betweenness.txt"
+            with open(relations_betweenness_path, "w", encoding="utf-8") as wf:
+                for r, avg_betweenness in relation_betweenness_avg.items():
+                    wf.write(f"{r}\t{avg_betweenness}\n")
+        
             # Assign betweenness centrality as edge weights
             for u, v in g.edges():
                 g[u][v]['weight'] = edge_betweenness.get((u, v), 1.0)
@@ -249,7 +282,7 @@ def solve_network_with_betweenness_weighted_pagerank():
             initial_importance = {node: importance / total_importance for node, importance in initial_importance.items()}
 
             # Calculate PageRank with edge betweenness weights
-            pagerank_centrality = nx.pagerank(g, alpha=0.5, weight='weight')
+            pagerank_centrality = nx.pagerank(g, alpha=0.7, weight='weight')
 
             # Save the weighted PageRank values to a file
             nodes_pagerank_path = data_path + str(i) + "/train_nodes_pagerank.txt"
