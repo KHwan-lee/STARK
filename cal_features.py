@@ -219,7 +219,8 @@ def solve_network():
                     wf.write(f"{node}\t{centrality_sum}\n")
 
 def solve_network_with_betweenness_weighted_pagerank():
-    dataset_names = ["FB_CKGE", "WN_CKGE"]
+    dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
+    #dataset_names = ["FB_CKGE", "WN_CKGE"]
     for data_name in dataset_names:
         data_path = f"./data/{data_name}/"
         for i in tqdm(range(5)):
@@ -259,8 +260,8 @@ def solve_network_with_betweenness_weighted_pagerank():
 
 if __name__ == "__main__":
 
-    # dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
-    dataset_names = ["FB_CKGE",  "WN_CKGE"]
+    dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
+    #dataset_names = ["FB_CKGE",  "WN_CKGE"]
     for data_name in dataset_names:
         kg = KnowledgeGraph(data_name)
     #solve_network()

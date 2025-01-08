@@ -5,8 +5,8 @@
 import os
 
 def nodes_sort():
-    # dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
-    dataset_names = ["FB_CKGE", "WN_CKGE"]
+    dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
+    #dataset_names = ["FB_CKGE", "WN_CKGE"]
     base_path = "./data/"
     for dataset_name in dataset_names:
         seen_entities = set()
