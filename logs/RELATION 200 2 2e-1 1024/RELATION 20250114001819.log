@@ -1,0 +1,244 @@
+2025-01-14 00:18:28,068 INFO    : Namespace(batch_size=1024, data_path='./data/RELATION/', dataset='RELATION', debug=False, device=device(type='cuda', index=0), emb_dim=200, ent_r='200', epoch_num=200, explore=False, gpu='0', l2=0.0, learning_rate='2e-1', log_path='./logs/RELATION 200 2 2e-1 1024/RELATION 20250114001819', logger=<RootLogger root (INFO)>, margin=8.0, model_name='LoraKGE_Layers', multi_layers_path='train_sorted_by_edges_betweenness.txt', neg_ratio=10, note='', num_ent_layers='2', num_layer=1, num_rel_layers='1', patience='10', predict_result=False, r=100, r_fixed=True, random_seed=3407, record=False, rel_r='200', save_path='./checkpoint/RELATION', skip_previous='False', snapshot_num=5, train_new=True, using_multi_layers=False, using_various_ranks='True', using_various_ranks_reverse=False, valid_metrics='mrr')
+2025-01-14 00:18:41,669 INFO    : Snapshot:0	0	10	Epoch:0	Loss:62.429	MRR:15.71	Hits@10:28.13	Best:15.71
+2025-01-14 00:18:52,858 INFO    : Snapshot:0	0	10	Epoch:1	Loss:36.118	MRR:23.79	Hits@10:41.78	Best:23.79
+2025-01-14 00:19:04,084 INFO    : Snapshot:0	0	10	Epoch:2	Loss:18.192	MRR:26.41	Hits@10:45.56	Best:26.41
+2025-01-14 00:19:15,498 INFO    : Snapshot:0	0	10	Epoch:3	Loss:9.585	MRR:27.26	Hits@10:46.89	Best:27.26
+2025-01-14 00:19:26,496 INFO    : Snapshot:0	0	10	Epoch:4	Loss:5.897	MRR:27.39	Hits@10:47.25	Best:27.39
+2025-01-14 00:19:37,616 INFO    : Snapshot:0	1	10	Epoch:5	Loss:4.24	MRR:27.38	Hits@10:47.27	Best:27.39
+2025-01-14 00:19:48,669 INFO    : Snapshot:0	0	10	Epoch:6	Loss:3.325	MRR:27.47	Hits@10:47.15	Best:27.47
+2025-01-14 00:19:59,781 INFO    : Snapshot:0	1	10	Epoch:7	Loss:2.844	MRR:27.42	Hits@10:47.02	Best:27.47
+2025-01-14 00:20:10,954 INFO    : Snapshot:0	2	10	Epoch:8	Loss:2.513	MRR:27.35	Hits@10:46.63	Best:27.47
+2025-01-14 00:20:22,198 INFO    : Snapshot:0	3	10	Epoch:9	Loss:2.265	MRR:26.98	Hits@10:46.44	Best:27.47
+2025-01-14 00:20:33,404 INFO    : Snapshot:0	4	10	Epoch:10	Loss:2.081	MRR:26.62	Hits@10:46.23	Best:27.47
+2025-01-14 00:20:44,521 INFO    : Snapshot:0	5	10	Epoch:11	Loss:1.986	MRR:26.66	Hits@10:46.31	Best:27.47
+2025-01-14 00:20:55,575 INFO    : Snapshot:0	6	10	Epoch:12	Loss:1.863	MRR:26.67	Hits@10:46.15	Best:27.47
+2025-01-14 00:21:06,609 INFO    : Snapshot:0	7	10	Epoch:13	Loss:1.777	MRR:26.57	Hits@10:45.69	Best:27.47
+2025-01-14 00:21:17,754 INFO    : Snapshot:0	8	10	Epoch:14	Loss:1.676	MRR:26.4	Hits@10:45.54	Best:27.47
+2025-01-14 00:21:29,025 INFO    : Snapshot:0	9	10	Epoch:15	Loss:1.632	MRR:26.32	Hits@10:45.63	Best:27.47
+2025-01-14 00:21:40,167 INFO    : Early Stopping! Snapshot:0 Epoch: 16 Best Results: 27.47
+2025-01-14 00:21:40,270 INFO    : => loading checkpoint './checkpoint/RELATION\0model_best.tar'
+2025-01-14 00:21:47,477 INFO    : 
++------------+--------+--------+--------+--------+---------+
+| Snapshot:0 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2769 | 0.1708 | 0.3384 | 0.4064 |  0.4734 |
++------------+--------+--------+--------+--------+---------+
+2025-01-14 00:22:10,784 INFO    : Snapshot:1	0	10	Epoch:0	Loss:26.461	MRR:9.14	Hits@10:19.7	Best:9.14
+2025-01-14 00:22:22,923 INFO    : Snapshot:1	0	10	Epoch:1	Loss:20.419	MRR:9.35	Hits@10:19.83	Best:9.35
+2025-01-14 00:22:35,095 INFO    : Snapshot:1	0	10	Epoch:2	Loss:19.783	MRR:9.83	Hits@10:20.55	Best:9.83
+2025-01-14 00:22:47,450 INFO    : Snapshot:1	0	10	Epoch:3	Loss:19.422	MRR:10.3	Hits@10:21.0	Best:10.3
+2025-01-14 00:22:59,563 INFO    : Snapshot:1	0	10	Epoch:4	Loss:19.114	MRR:10.42	Hits@10:21.36	Best:10.42
+2025-01-14 00:23:11,613 INFO    : Snapshot:1	0	10	Epoch:5	Loss:18.98	MRR:10.64	Hits@10:21.84	Best:10.64
+2025-01-14 00:23:23,698 INFO    : Snapshot:1	1	10	Epoch:6	Loss:18.846	MRR:10.6	Hits@10:21.63	Best:10.64
+2025-01-14 00:23:35,853 INFO    : Snapshot:1	0	10	Epoch:7	Loss:18.796	MRR:10.67	Hits@10:22.03	Best:10.67
+2025-01-14 00:23:47,922 INFO    : Snapshot:1	0	10	Epoch:8	Loss:18.665	MRR:11.01	Hits@10:22.3	Best:11.01
+2025-01-14 00:23:59,936 INFO    : Snapshot:1	1	10	Epoch:9	Loss:18.667	MRR:10.77	Hits@10:22.11	Best:11.01
+2025-01-14 00:24:11,881 INFO    : Snapshot:1	2	10	Epoch:10	Loss:18.586	MRR:10.83	Hits@10:22.0	Best:11.01
+2025-01-14 00:24:24,259 INFO    : Snapshot:1	3	10	Epoch:11	Loss:18.56	MRR:10.81	Hits@10:22.09	Best:11.01
+2025-01-14 00:24:36,426 INFO    : Snapshot:1	4	10	Epoch:12	Loss:18.552	MRR:11.0	Hits@10:22.31	Best:11.01
+2025-01-14 00:24:48,646 INFO    : Snapshot:1	5	10	Epoch:13	Loss:18.485	MRR:10.86	Hits@10:22.3	Best:11.01
+2025-01-14 00:25:00,893 INFO    : Snapshot:1	0	10	Epoch:14	Loss:18.454	MRR:11.1	Hits@10:22.59	Best:11.1
+2025-01-14 00:25:13,102 INFO    : Snapshot:1	1	10	Epoch:15	Loss:18.451	MRR:10.99	Hits@10:22.11	Best:11.1
+2025-01-14 00:25:25,119 INFO    : Snapshot:1	2	10	Epoch:16	Loss:18.439	MRR:10.9	Hits@10:22.05	Best:11.1
+2025-01-14 00:25:37,138 INFO    : Snapshot:1	0	10	Epoch:17	Loss:18.382	MRR:11.22	Hits@10:22.59	Best:11.22
+2025-01-14 00:25:49,164 INFO    : Snapshot:1	1	10	Epoch:18	Loss:18.386	MRR:11.18	Hits@10:22.73	Best:11.22
+2025-01-14 00:26:01,305 INFO    : Snapshot:1	2	10	Epoch:19	Loss:18.369	MRR:11.05	Hits@10:22.56	Best:11.22
+2025-01-14 00:26:13,625 INFO    : Snapshot:1	3	10	Epoch:20	Loss:18.401	MRR:11.2	Hits@10:22.57	Best:11.22
+2025-01-14 00:26:25,798 INFO    : Snapshot:1	4	10	Epoch:21	Loss:18.365	MRR:11.19	Hits@10:22.48	Best:11.22
+2025-01-14 00:26:37,827 INFO    : Snapshot:1	5	10	Epoch:22	Loss:18.342	MRR:11.12	Hits@10:22.65	Best:11.22
+2025-01-14 00:26:49,904 INFO    : Snapshot:1	0	10	Epoch:23	Loss:18.325	MRR:11.28	Hits@10:22.53	Best:11.28
+2025-01-14 00:27:01,893 INFO    : Snapshot:1	1	10	Epoch:24	Loss:18.308	MRR:11.24	Hits@10:22.55	Best:11.28
+2025-01-14 00:27:13,879 INFO    : Snapshot:1	2	10	Epoch:25	Loss:18.27	MRR:11.13	Hits@10:22.57	Best:11.28
+2025-01-14 00:27:25,902 INFO    : Snapshot:1	3	10	Epoch:26	Loss:18.318	MRR:11.18	Hits@10:22.63	Best:11.28
+2025-01-14 00:27:37,969 INFO    : Snapshot:1	4	10	Epoch:27	Loss:18.268	MRR:11.28	Hits@10:22.68	Best:11.28
+2025-01-14 00:27:50,265 INFO    : Snapshot:1	5	10	Epoch:28	Loss:18.287	MRR:11.25	Hits@10:22.8	Best:11.28
+2025-01-14 00:28:02,244 INFO    : Snapshot:1	6	10	Epoch:29	Loss:18.248	MRR:11.17	Hits@10:22.69	Best:11.28
+2025-01-14 00:28:14,296 INFO    : Snapshot:1	0	10	Epoch:30	Loss:18.263	MRR:11.43	Hits@10:22.81	Best:11.43
+2025-01-14 00:28:26,446 INFO    : Snapshot:1	1	10	Epoch:31	Loss:18.307	MRR:11.32	Hits@10:22.67	Best:11.43
+2025-01-14 00:28:38,575 INFO    : Snapshot:1	2	10	Epoch:32	Loss:18.232	MRR:11.24	Hits@10:22.7	Best:11.43
+2025-01-14 00:28:50,645 INFO    : Snapshot:1	3	10	Epoch:33	Loss:18.258	MRR:11.24	Hits@10:22.82	Best:11.43
+2025-01-14 00:29:02,690 INFO    : Snapshot:1	4	10	Epoch:34	Loss:18.256	MRR:11.24	Hits@10:22.75	Best:11.43
+2025-01-14 00:29:14,760 INFO    : Snapshot:1	5	10	Epoch:35	Loss:18.241	MRR:11.41	Hits@10:22.76	Best:11.43
+2025-01-14 00:29:27,118 INFO    : Snapshot:1	6	10	Epoch:36	Loss:18.238	MRR:11.28	Hits@10:22.8	Best:11.43
+2025-01-14 00:29:39,272 INFO    : Snapshot:1	7	10	Epoch:37	Loss:18.243	MRR:11.35	Hits@10:22.84	Best:11.43
+2025-01-14 00:29:51,241 INFO    : Snapshot:1	8	10	Epoch:38	Loss:18.212	MRR:11.27	Hits@10:22.76	Best:11.43
+2025-01-14 00:30:03,325 INFO    : Snapshot:1	9	10	Epoch:39	Loss:18.238	MRR:11.28	Hits@10:22.76	Best:11.43
+2025-01-14 00:30:15,526 INFO    : Early Stopping! Snapshot:1 Epoch: 40 Best Results: 11.43
+2025-01-14 00:30:15,635 INFO    : => loading checkpoint './checkpoint/RELATION\1model_best.tar'
+2025-01-14 00:30:31,188 INFO    : 
++------------+--------+--------+--------+--------+---------+
+| Snapshot:1 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2769 | 0.1708 | 0.3384 | 0.4064 |  0.4734 |
+|     1      | 0.1143 | 0.0541 | 0.1327 | 0.1712 |  0.2271 |
++------------+--------+--------+--------+--------+---------+
+2025-01-14 00:30:48,974 INFO    : Snapshot:2	0	10	Epoch:0	Loss:21.108	MRR:9.12	Hits@10:14.18	Best:9.12
+2025-01-14 00:30:57,755 INFO    : Snapshot:2	0	10	Epoch:1	Loss:17.853	MRR:9.48	Hits@10:14.97	Best:9.48
+2025-01-14 00:31:06,561 INFO    : Snapshot:2	0	10	Epoch:2	Loss:17.614	MRR:9.53	Hits@10:15.19	Best:9.53
+2025-01-14 00:31:15,583 INFO    : Snapshot:2	0	10	Epoch:3	Loss:17.548	MRR:9.89	Hits@10:15.55	Best:9.89
+2025-01-14 00:31:24,339 INFO    : Snapshot:2	1	10	Epoch:4	Loss:17.47	MRR:9.84	Hits@10:15.58	Best:9.89
+2025-01-14 00:31:33,038 INFO    : Snapshot:2	0	10	Epoch:5	Loss:17.453	MRR:9.95	Hits@10:15.82	Best:9.95
+2025-01-14 00:31:41,773 INFO    : Snapshot:2	0	10	Epoch:6	Loss:17.432	MRR:10.03	Hits@10:15.94	Best:10.03
+2025-01-14 00:31:50,439 INFO    : Snapshot:2	0	10	Epoch:7	Loss:17.381	MRR:10.04	Hits@10:16.05	Best:10.04
+2025-01-14 00:31:59,153 INFO    : Snapshot:2	0	10	Epoch:8	Loss:17.358	MRR:10.14	Hits@10:16.2	Best:10.14
+2025-01-14 00:32:07,839 INFO    : Snapshot:2	0	10	Epoch:9	Loss:17.306	MRR:10.17	Hits@10:16.36	Best:10.17
+2025-01-14 00:32:16,613 INFO    : Snapshot:2	1	10	Epoch:10	Loss:17.322	MRR:10.05	Hits@10:16.09	Best:10.17
+2025-01-14 00:32:25,388 INFO    : Snapshot:2	0	10	Epoch:11	Loss:17.334	MRR:10.23	Hits@10:16.13	Best:10.23
+2025-01-14 00:32:34,152 INFO    : Snapshot:2	1	10	Epoch:12	Loss:17.332	MRR:10.22	Hits@10:16.17	Best:10.23
+2025-01-14 00:32:42,932 INFO    : Snapshot:2	0	10	Epoch:13	Loss:17.332	MRR:10.27	Hits@10:16.48	Best:10.27
+2025-01-14 00:32:51,604 INFO    : Snapshot:2	0	10	Epoch:14	Loss:17.3	MRR:10.28	Hits@10:16.39	Best:10.28
+2025-01-14 00:33:00,543 INFO    : Snapshot:2	1	10	Epoch:15	Loss:17.28	MRR:10.2	Hits@10:16.19	Best:10.28
+2025-01-14 00:33:09,206 INFO    : Snapshot:2	2	10	Epoch:16	Loss:17.283	MRR:10.17	Hits@10:16.11	Best:10.28
+2025-01-14 00:33:17,974 INFO    : Snapshot:2	3	10	Epoch:17	Loss:17.253	MRR:10.28	Hits@10:16.4	Best:10.28
+2025-01-14 00:33:26,737 INFO    : Snapshot:2	4	10	Epoch:18	Loss:17.257	MRR:10.22	Hits@10:16.24	Best:10.28
+2025-01-14 00:33:35,495 INFO    : Snapshot:2	5	10	Epoch:19	Loss:17.298	MRR:10.18	Hits@10:16.26	Best:10.28
+2025-01-14 00:33:44,362 INFO    : Snapshot:2	0	10	Epoch:20	Loss:17.256	MRR:10.37	Hits@10:16.5	Best:10.37
+2025-01-14 00:33:53,094 INFO    : Snapshot:2	1	10	Epoch:21	Loss:17.268	MRR:10.32	Hits@10:16.28	Best:10.37
+2025-01-14 00:34:01,749 INFO    : Snapshot:2	2	10	Epoch:22	Loss:17.204	MRR:10.37	Hits@10:16.48	Best:10.37
+2025-01-14 00:34:10,488 INFO    : Snapshot:2	0	10	Epoch:23	Loss:17.247	MRR:10.48	Hits@10:16.65	Best:10.48
+2025-01-14 00:34:19,137 INFO    : Snapshot:2	1	10	Epoch:24	Loss:17.205	MRR:10.3	Hits@10:16.36	Best:10.48
+2025-01-14 00:34:27,928 INFO    : Snapshot:2	0	10	Epoch:25	Loss:17.244	MRR:10.5	Hits@10:16.58	Best:10.5
+2025-01-14 00:34:36,613 INFO    : Snapshot:2	1	10	Epoch:26	Loss:17.258	MRR:10.46	Hits@10:16.38	Best:10.5
+2025-01-14 00:34:45,577 INFO    : Snapshot:2	2	10	Epoch:27	Loss:17.231	MRR:10.29	Hits@10:16.31	Best:10.5
+2025-01-14 00:34:54,326 INFO    : Snapshot:2	3	10	Epoch:28	Loss:17.238	MRR:10.37	Hits@10:16.26	Best:10.5
+2025-01-14 00:35:03,007 INFO    : Snapshot:2	4	10	Epoch:29	Loss:17.23	MRR:10.42	Hits@10:16.48	Best:10.5
+2025-01-14 00:35:11,769 INFO    : Snapshot:2	5	10	Epoch:30	Loss:17.227	MRR:10.47	Hits@10:16.36	Best:10.5
+2025-01-14 00:35:20,581 INFO    : Snapshot:2	0	10	Epoch:31	Loss:17.21	MRR:10.56	Hits@10:16.46	Best:10.56
+2025-01-14 00:35:29,379 INFO    : Snapshot:2	1	10	Epoch:32	Loss:17.217	MRR:10.4	Hits@10:16.25	Best:10.56
+2025-01-14 00:35:38,146 INFO    : Snapshot:2	2	10	Epoch:33	Loss:17.239	MRR:10.33	Hits@10:16.24	Best:10.56
+2025-01-14 00:35:46,947 INFO    : Snapshot:2	3	10	Epoch:34	Loss:17.201	MRR:10.39	Hits@10:16.23	Best:10.56
+2025-01-14 00:35:55,725 INFO    : Snapshot:2	4	10	Epoch:35	Loss:17.179	MRR:10.55	Hits@10:16.43	Best:10.56
+2025-01-14 00:36:04,469 INFO    : Snapshot:2	5	10	Epoch:36	Loss:17.199	MRR:10.46	Hits@10:16.48	Best:10.56
+2025-01-14 00:36:13,176 INFO    : Snapshot:2	6	10	Epoch:37	Loss:17.166	MRR:10.39	Hits@10:16.28	Best:10.56
+2025-01-14 00:36:21,954 INFO    : Snapshot:2	0	10	Epoch:38	Loss:17.192	MRR:10.6	Hits@10:16.7	Best:10.6
+2025-01-14 00:36:30,939 INFO    : Snapshot:2	1	10	Epoch:39	Loss:17.172	MRR:10.4	Hits@10:16.54	Best:10.6
+2025-01-14 00:36:39,718 INFO    : Snapshot:2	2	10	Epoch:40	Loss:17.184	MRR:10.54	Hits@10:16.6	Best:10.6
+2025-01-14 00:36:48,512 INFO    : Snapshot:2	3	10	Epoch:41	Loss:17.174	MRR:10.49	Hits@10:16.55	Best:10.6
+2025-01-14 00:36:57,339 INFO    : Snapshot:2	0	10	Epoch:42	Loss:17.194	MRR:10.61	Hits@10:16.68	Best:10.61
+2025-01-14 00:37:06,135 INFO    : Snapshot:2	1	10	Epoch:43	Loss:17.211	MRR:10.48	Hits@10:16.5	Best:10.61
+2025-01-14 00:37:14,884 INFO    : Snapshot:2	2	10	Epoch:44	Loss:17.198	MRR:10.4	Hits@10:16.22	Best:10.61
+2025-01-14 00:37:23,604 INFO    : Snapshot:2	3	10	Epoch:45	Loss:17.153	MRR:10.5	Hits@10:16.69	Best:10.61
+2025-01-14 00:37:32,262 INFO    : Snapshot:2	4	10	Epoch:46	Loss:17.196	MRR:10.48	Hits@10:16.65	Best:10.61
+2025-01-14 00:37:40,900 INFO    : Snapshot:2	5	10	Epoch:47	Loss:17.149	MRR:10.53	Hits@10:16.48	Best:10.61
+2025-01-14 00:37:49,642 INFO    : Snapshot:2	6	10	Epoch:48	Loss:17.204	MRR:10.5	Hits@10:16.68	Best:10.61
+2025-01-14 00:37:58,302 INFO    : Snapshot:2	7	10	Epoch:49	Loss:17.194	MRR:10.43	Hits@10:16.31	Best:10.61
+2025-01-14 00:38:07,029 INFO    : Snapshot:2	8	10	Epoch:50	Loss:17.206	MRR:10.56	Hits@10:16.79	Best:10.61
+2025-01-14 00:38:15,976 INFO    : Snapshot:2	9	10	Epoch:51	Loss:17.167	MRR:10.54	Hits@10:16.61	Best:10.61
+2025-01-14 00:38:24,760 INFO    : Early Stopping! Snapshot:2 Epoch: 52 Best Results: 10.61
+2025-01-14 00:38:24,873 INFO    : => loading checkpoint './checkpoint/RELATION\2model_best.tar'
+2025-01-14 00:38:46,323 INFO    : 
++------------+--------+--------+--------+--------+---------+
+| Snapshot:2 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2769 | 0.1708 | 0.3384 | 0.4064 |  0.4734 |
+|     1      | 0.1143 | 0.0541 | 0.1327 | 0.1712 |  0.2271 |
+|     2      | 0.1034 | 0.068  | 0.1044 | 0.1262 |  0.1651 |
++------------+--------+--------+--------+--------+---------+
+2025-01-14 00:38:55,986 INFO    : Snapshot:3	0	10	Epoch:0	Loss:9.689	MRR:16.56	Hits@10:25.49	Best:16.56
+2025-01-14 00:39:00,091 INFO    : Snapshot:3	0	10	Epoch:1	Loss:6.627	MRR:17.12	Hits@10:26.39	Best:17.12
+2025-01-14 00:39:04,373 INFO    : Snapshot:3	1	10	Epoch:2	Loss:6.385	MRR:15.67	Hits@10:26.22	Best:17.12
+2025-01-14 00:39:08,471 INFO    : Snapshot:3	2	10	Epoch:3	Loss:6.251	MRR:16.74	Hits@10:26.71	Best:17.12
+2025-01-14 00:39:12,551 INFO    : Snapshot:3	3	10	Epoch:4	Loss:6.215	MRR:16.06	Hits@10:26.92	Best:17.12
+2025-01-14 00:39:16,676 INFO    : Snapshot:3	4	10	Epoch:5	Loss:6.165	MRR:15.91	Hits@10:27.16	Best:17.12
+2025-01-14 00:39:20,794 INFO    : Snapshot:3	5	10	Epoch:6	Loss:6.131	MRR:16.03	Hits@10:27.23	Best:17.12
+2025-01-14 00:39:24,862 INFO    : Snapshot:3	6	10	Epoch:7	Loss:6.117	MRR:16.25	Hits@10:28.04	Best:17.12
+2025-01-14 00:39:28,950 INFO    : Snapshot:3	7	10	Epoch:8	Loss:6.121	MRR:15.47	Hits@10:28.17	Best:17.12
+2025-01-14 00:39:33,065 INFO    : Snapshot:3	8	10	Epoch:9	Loss:6.087	MRR:15.91	Hits@10:28.23	Best:17.12
+2025-01-14 00:39:37,152 INFO    : Snapshot:3	9	10	Epoch:10	Loss:6.105	MRR:16.98	Hits@10:28.63	Best:17.12
+2025-01-14 00:39:41,263 INFO    : Early Stopping! Snapshot:3 Epoch: 11 Best Results: 17.12
+2025-01-14 00:39:41,378 INFO    : => loading checkpoint './checkpoint/RELATION\3model_best.tar'
+2025-01-14 00:40:05,538 INFO    : 
++------------+--------+--------+--------+--------+---------+
+| Snapshot:3 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2769 | 0.1708 | 0.3384 | 0.4064 |  0.4734 |
+|     1      | 0.1143 | 0.0541 | 0.1327 | 0.1712 |  0.2271 |
+|     2      | 0.1034 | 0.068  | 0.1044 | 0.1262 |  0.1651 |
+|     3      | 0.1672 | 0.111  | 0.1862 | 0.2186 |  0.2662 |
++------------+--------+--------+--------+--------+---------+
+2025-01-14 00:40:37,328 INFO    : Snapshot:4	0	10	Epoch:0	Loss:8.451	MRR:11.64	Hits@10:19.84	Best:11.64
+2025-01-14 00:40:51,881 INFO    : Snapshot:4	0	10	Epoch:1	Loss:6.355	MRR:12.28	Hits@10:21.78	Best:12.28
+2025-01-14 00:41:06,365 INFO    : Snapshot:4	0	10	Epoch:2	Loss:6.162	MRR:12.68	Hits@10:22.31	Best:12.68
+2025-01-14 00:41:20,857 INFO    : Snapshot:4	1	10	Epoch:3	Loss:6.101	MRR:12.68	Hits@10:22.47	Best:12.68
+2025-01-14 00:41:35,357 INFO    : Snapshot:4	0	10	Epoch:4	Loss:6.07	MRR:13.02	Hits@10:22.76	Best:13.02
+2025-01-14 00:41:49,858 INFO    : Snapshot:4	1	10	Epoch:5	Loss:6.065	MRR:12.93	Hits@10:22.81	Best:13.02
+2025-01-14 00:42:04,342 INFO    : Snapshot:4	2	10	Epoch:6	Loss:6.102	MRR:12.91	Hits@10:22.96	Best:13.02
+2025-01-14 00:42:18,799 INFO    : Snapshot:4	3	10	Epoch:7	Loss:6.033	MRR:12.97	Hits@10:22.89	Best:13.02
+2025-01-14 00:42:33,298 INFO    : Snapshot:4	4	10	Epoch:8	Loss:6.01	MRR:12.85	Hits@10:22.68	Best:13.02
+2025-01-14 00:42:47,840 INFO    : Snapshot:4	5	10	Epoch:9	Loss:6.024	MRR:12.97	Hits@10:22.95	Best:13.02
+2025-01-14 00:43:02,353 INFO    : Snapshot:4	6	10	Epoch:10	Loss:5.999	MRR:13.02	Hits@10:23.26	Best:13.02
+2025-01-14 00:43:16,844 INFO    : Snapshot:4	7	10	Epoch:11	Loss:6.011	MRR:13.01	Hits@10:23.34	Best:13.02
+2025-01-14 00:43:31,347 INFO    : Snapshot:4	0	10	Epoch:12	Loss:5.997	MRR:13.03	Hits@10:23.5	Best:13.03
+2025-01-14 00:43:46,003 INFO    : Snapshot:4	1	10	Epoch:13	Loss:6.006	MRR:12.81	Hits@10:23.25	Best:13.03
+2025-01-14 00:44:00,461 INFO    : Snapshot:4	2	10	Epoch:14	Loss:5.999	MRR:12.98	Hits@10:22.98	Best:13.03
+2025-01-14 00:44:14,926 INFO    : Snapshot:4	3	10	Epoch:15	Loss:5.982	MRR:12.99	Hits@10:23.36	Best:13.03
+2025-01-14 00:44:29,442 INFO    : Snapshot:4	0	10	Epoch:16	Loss:5.993	MRR:13.17	Hits@10:23.29	Best:13.17
+2025-01-14 00:44:43,962 INFO    : Snapshot:4	1	10	Epoch:17	Loss:5.99	MRR:13.14	Hits@10:23.49	Best:13.17
+2025-01-14 00:44:58,463 INFO    : Snapshot:4	0	10	Epoch:18	Loss:5.996	MRR:13.25	Hits@10:23.13	Best:13.25
+2025-01-14 00:45:14,841 INFO    : Snapshot:4	0	10	Epoch:19	Loss:5.994	MRR:13.61	Hits@10:23.56	Best:13.61
+2025-01-14 00:45:29,288 INFO    : Snapshot:4	1	10	Epoch:20	Loss:5.977	MRR:13.16	Hits@10:23.7	Best:13.61
+2025-01-14 00:45:43,567 INFO    : Snapshot:4	2	10	Epoch:21	Loss:5.983	MRR:13.2	Hits@10:23.14	Best:13.61
+2025-01-14 00:45:57,667 INFO    : Snapshot:4	3	10	Epoch:22	Loss:6.008	MRR:13.13	Hits@10:23.12	Best:13.61
+2025-01-14 00:46:11,778 INFO    : Snapshot:4	4	10	Epoch:23	Loss:5.982	MRR:12.95	Hits@10:23.22	Best:13.61
+2025-01-14 00:46:25,942 INFO    : Snapshot:4	5	10	Epoch:24	Loss:5.991	MRR:13.06	Hits@10:23.17	Best:13.61
+2025-01-14 00:46:40,047 INFO    : Snapshot:4	6	10	Epoch:25	Loss:5.996	MRR:13.19	Hits@10:23.55	Best:13.61
+2025-01-14 00:46:54,203 INFO    : Snapshot:4	7	10	Epoch:26	Loss:5.971	MRR:13.09	Hits@10:23.23	Best:13.61
+2025-01-14 00:47:08,337 INFO    : Snapshot:4	8	10	Epoch:27	Loss:5.952	MRR:13.46	Hits@10:23.51	Best:13.61
+2025-01-14 00:47:22,480 INFO    : Snapshot:4	9	10	Epoch:28	Loss:5.973	MRR:13.38	Hits@10:23.52	Best:13.61
+2025-01-14 00:47:36,600 INFO    : Early Stopping! Snapshot:4 Epoch: 29 Best Results: 13.61
+2025-01-14 00:47:36,720 INFO    : => loading checkpoint './checkpoint/RELATION\4model_best.tar'
+2025-01-14 00:48:14,475 INFO    : 
++------------+--------+--------+--------+--------+---------+
+| Snapshot:4 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2769 | 0.1708 | 0.3384 | 0.4064 |  0.4734 |
+|     1      | 0.1143 | 0.0541 | 0.1327 | 0.1712 |  0.2271 |
+|     2      | 0.1034 | 0.068  | 0.1044 | 0.1262 |  0.1651 |
+|     3      | 0.1672 | 0.111  | 0.1862 | 0.2186 |  0.2662 |
+|     4      | 0.1336 | 0.0791 | 0.1415 | 0.1757 |  0.2385 |
++------------+--------+--------+--------+--------+---------+
+2025-01-14 00:48:14,475 INFO    : Final Result:
+[+------------+--------+--------+--------+--------+---------+
+| Snapshot:0 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2769 | 0.1708 | 0.3384 | 0.4064 |  0.4734 |
++------------+--------+--------+--------+--------+---------+, +------------+--------+--------+--------+--------+---------+
+| Snapshot:1 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2769 | 0.1708 | 0.3384 | 0.4064 |  0.4734 |
+|     1      | 0.1143 | 0.0541 | 0.1327 | 0.1712 |  0.2271 |
++------------+--------+--------+--------+--------+---------+, +------------+--------+--------+--------+--------+---------+
+| Snapshot:2 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2769 | 0.1708 | 0.3384 | 0.4064 |  0.4734 |
+|     1      | 0.1143 | 0.0541 | 0.1327 | 0.1712 |  0.2271 |
+|     2      | 0.1034 | 0.068  | 0.1044 | 0.1262 |  0.1651 |
++------------+--------+--------+--------+--------+---------+, +------------+--------+--------+--------+--------+---------+
+| Snapshot:3 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2769 | 0.1708 | 0.3384 | 0.4064 |  0.4734 |
+|     1      | 0.1143 | 0.0541 | 0.1327 | 0.1712 |  0.2271 |
+|     2      | 0.1034 | 0.068  | 0.1044 | 0.1262 |  0.1651 |
+|     3      | 0.1672 | 0.111  | 0.1862 | 0.2186 |  0.2662 |
++------------+--------+--------+--------+--------+---------+, +------------+--------+--------+--------+--------+---------+
+| Snapshot:4 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.2769 | 0.1708 | 0.3384 | 0.4064 |  0.4734 |
+|     1      | 0.1143 | 0.0541 | 0.1327 | 0.1712 |  0.2271 |
+|     2      | 0.1034 | 0.068  | 0.1044 | 0.1262 |  0.1651 |
+|     3      | 0.1672 | 0.111  | 0.1862 | 0.2186 |  0.2662 |
+|     4      | 0.1336 | 0.0791 | 0.1415 | 0.1757 |  0.2385 |
++------------+--------+--------+--------+--------+---------+]
+2025-01-14 00:48:14,475 INFO    : Report Result:
++----------+--------------------+-----------+--------------+--------------+---------------+
+| Snapshot |        Time        | Whole_MRR | Whole_Hits@1 | Whole_Hits@3 | Whole_Hits@10 |
++----------+--------------------+-----------+--------------+--------------+---------------+
+|    0     | 192.0990345478058  |   0.277   |    0.171     |    0.338     |     0.473     |
+|    1     | 499.93385648727417 |   0.198   |    0.114     |    0.238     |     0.354     |
+|    2     | 467.49312138557434 |   0.174   |    0.102     |    0.204     |     0.305     |
+|    3     | 51.81419515609741  |   0.173   |    0.103     |    0.202     |     0.301     |
+|    4     | 436.9928936958313  |    0.17   |    0.102     |    0.198     |     0.297     |
++----------+--------------------+-----------+--------------+--------------+---------------+
+2025-01-14 00:48:14,475 INFO    : Sum_Training_Time:1648.333101272583
+2025-01-14 00:48:14,475 INFO    : Every_Training_Time:[192.0990345478058, 499.93385648727417, 467.49312138557434, 51.81419515609741, 436.9928936958313]
+2025-01-14 00:48:14,475 INFO    : Forward transfer: 0.01165 Backward transfer: 0.0

@@ -175,6 +175,7 @@ class Snapshot():
         self.new_entities = []
 
 def solve_network():
+    # dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
     dataset_names = ["FB_CKGE", "WN_CKGE"]
     for data_name in dataset_names:
         data_path = f"./data/{data_name}/"
@@ -189,38 +190,38 @@ def solve_network():
                     t = int(line_list[2])
                     g.add_edge(h, t)
             
-            # # 원래 방식은 그냥 차수 계산
-            # nodes_degree_dict = nx.degree_centrality(g)
-            # nodes_degree_path = data_path + str(i) + "/train_nodes_degree.txt"
-            # with open(nodes_degree_path, "w", encoding="utf-8") as wf:
-            #     for k, v in nodes_degree_dict.items():
-            #         wf.write(str(k))
-            #         wf.write("\t")
-            #         wf.write(str(v))
-            #         wf.write("\n")
-            
-            # new method
-            # 노드의 중심도 계산
-            degree_centrality = nx.degree_centrality(g)
-
-            # 1-hop 이웃의 중심도 합 계산
-            neighbor_centrality_sum = {}
-            for node in g.nodes:
-                # 각 노드의 1-hop 이웃 탐색
-                neighbors = list(g.neighbors(node))
-                node_degree = len(list(g.neighbors(node)))
-                # 이웃들의 중심도 합산
-                neighbor_centrality_sum[node] = sum(degree_centrality[neighbor] for neighbor in neighbors) * node_degree
-
-            # 결과 저장
+            # 원래 방식은 그냥 차수 계산
+            nodes_degree_dict = nx.degree_centrality(g)
             nodes_degree_path = data_path + str(i) + "/train_nodes_degree.txt"
             with open(nodes_degree_path, "w", encoding="utf-8") as wf:
-                for node, centrality_sum in neighbor_centrality_sum.items():
-                    wf.write(f"{node}\t{centrality_sum}\n")
+                for k, v in nodes_degree_dict.items():
+                    wf.write(str(k))
+                    wf.write("\t")
+                    wf.write(str(v))
+                    wf.write("\n")
+            
+            # # new method
+            # # 노드의 중심도 계산
+            # degree_centrality = nx.degree_centrality(g)
+
+            # # 1-hop 이웃의 중심도 합 계산
+            # neighbor_centrality_sum = {}
+            # for node in g.nodes:
+            #     # 각 노드의 1-hop 이웃 탐색
+            #     neighbors = list(g.neighbors(node))
+            #     node_degree = len(list(g.neighbors(node)))
+            #     # 이웃들의 중심도 합산
+            #     neighbor_centrality_sum[node] = sum(degree_centrality[neighbor] for neighbor in neighbors) * node_degree
+
+            # # 결과 저장
+            # nodes_degree_path = data_path + str(i) + "/train_nodes_degree.txt"
+            # with open(nodes_degree_path, "w", encoding="utf-8") as wf:
+            #     for node, centrality_sum in neighbor_centrality_sum.items():
+            #         wf.write(f"{node}\t{centrality_sum}\n")
 
 def solve_network_with_betweenness_weighted_pagerank():
     dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
-    #dataset_names = ["FB_CKGE", "WN_CKGE"]
+    #dataset_names = ["FACT"]
     for data_name in dataset_names:
         data_path = f"./data/{data_name}/"
         for i in tqdm(range(5)):
@@ -250,7 +251,7 @@ def solve_network_with_betweenness_weighted_pagerank():
             initial_importance = {node: importance / total_importance for node, importance in initial_importance.items()}
 
             # Calculate PageRank with edge betweenness weights
-            pagerank_centrality = nx.pagerank(g, alpha=0.5, weight='weight')
+            pagerank_centrality = nx.pagerank(g, alpha=0.85, weight='weight', max_iter=100)
 
             # Save the weighted PageRank values to a file
             nodes_pagerank_path = data_path + str(i) + "/train_nodes_pagerank.txt"
@@ -261,6 +262,7 @@ def solve_network_with_betweenness_weighted_pagerank():
 if __name__ == "__main__":
 
     dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
+    #dataset_names = ["FACT"]
     #dataset_names = ["FB_CKGE",  "WN_CKGE"]
     for data_name in dataset_names:
         kg = KnowledgeGraph(data_name)

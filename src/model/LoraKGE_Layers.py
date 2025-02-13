@@ -37,7 +37,7 @@ class LoraKGE_Layers(BaseModel):
                     all_new_entities[node] = (distance, score)
         # 수정한 부분
         #all_new_entities = dict(sorted(all_new_entities.items(), key = lambda kv:(kv[1][0], kv[1][1])))
-        all_new_entities = dict(sorted(all_new_entities.items(), key = lambda kv:(-kv[1][1]), reverse=True))
+        all_new_entities = dict(sorted(all_new_entities.items(), key = lambda kv:(kv[1][1]), reverse=True))
         
         self.all_new_entities = all_new_entities
         all_new_entities = list(all_new_entities.keys())
@@ -51,8 +51,11 @@ class LoraKGE_Layers(BaseModel):
     def expand_lora_embeddings(self):
         self.new_ordered_entities = self.get_new_ordered_entities()
         new_ent_embeddings_len = self.kg.snapshots[self.args.snapshot + 1].num_ent - self.kg.snapshots[self.args.snapshot].num_ent
+        print("new entities embeddings length: " + str(new_ent_embeddings_len))
         new_rel_embeddings_len = self.kg.snapshots[self.args.snapshot + 1].num_rel - self.kg.snapshots[self.args.snapshot].num_rel
+        print("new relations embeddings length: " + str(new_rel_embeddings_len))
         self.lora_ent_len = (new_ent_embeddings_len + int(self.args.num_ent_layers) - 1) // int(self.args.num_ent_layers)
+        print("Each LoRA length: "+ str(self.lora_ent_len))
         tmp_r = self.args.ent_r
         # 이것도 빼야 맞는듯
         # self.args.ent_r = (self.lora_ent_len // 20) if (self.lora_ent_len // 20) > int(self.args.ent_r) else self.args.ent_r
@@ -101,12 +104,15 @@ class LoraKGE_Layers(BaseModel):
             new_ent_embeddings = self.ent_embeddings.weight.data
             new_rel_embeddings = self.rel_embeddings.weight.data
             for lora_id in range(int(self.args.num_ent_layers) - 1):
+                
                 start_id = self.kg.snapshots[self.args.snapshot - 1].num_ent + lora_id * self.lora_ent_len
                 new_ent_embeddings[start_id: start_id + self.lora_ent_len] = Parameter(self.lora_ent_embeddings_list[lora_id].forward(torch.arange(self.lora_ent_len).to(self.args.device)))
+                print("debugging: " + str(start_id) + " " + str(self.lora_ent_len))
             last_start_id = self.kg.snapshots[self.args.snapshot - 1].num_ent + (int(self.args.num_ent_layers) - 1) * self.lora_ent_len
             last_lora_id = int(self.args.num_ent_layers) - 1
             new_ent_embeddings[last_start_id:] = Parameter(self.lora_ent_embeddings_list[last_lora_id].forward(torch.arange(len(new_ent_embeddings[last_start_id:])).to(self.args.device)))
             ent_indices = list(range(self.kg.snapshots[self.args.snapshot - 1].num_ent)) + self.new_ordered_entities
+            print(str(len(new_ent_embeddings)) + " " + str(len(ent_indices)))
             assert len(new_ent_embeddings) == len(ent_indices)
             new_ent_embeddings = new_ent_embeddings[ent_indices]
             new_rel_embeddings[self.kg.snapshots[self.args.snapshot - 1].num_rel:] = Parameter(deepcopy(self.lora_rel_embeddings.forward(torch.arange(len(self.lora_rel_embeddings.weight)).to(self.args.device))))

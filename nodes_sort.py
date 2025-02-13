@@ -69,7 +69,7 @@ def nodes_sort():
                                 # 얘네도 본것으로 처리를 해야함
                                 seen_entities.add(int(entity))
             # 새로운 기준을 저장할 파일
-            # train_distance_nodes_path = os.path.join(true_path_snapshot, "train_distance_nodes.txt")
+            #train_distance_nodes_path = os.path.join(true_path_snapshot, "train_distance_nodes.txt")
             train_distance_nodes_path = os.path.join(true_path_snapshot, "train_distance_nodes2.txt")
             with open(train_distance_nodes_path, "w", encoding="utf-8") as wf:
                 for key, value in entities_sorted.items():
