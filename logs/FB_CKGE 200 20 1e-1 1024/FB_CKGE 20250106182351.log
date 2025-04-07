@@ -1,0 +1,25 @@
+2025-01-06 18:24:01,609 INFO    : Namespace(batch_size=1024, data_path='./data/FB_CKGE/', dataset='FB_CKGE', debug=False, device=device(type='cuda', index=0), emb_dim=200, ent_r='200', epoch_num=200, explore=False, gpu='0', l2=0.0, learning_rate='1e-1', log_path='./logs/FB_CKGE 200 20 1e-1 1024/FB_CKGE 20250106182351', logger=<RootLogger root (INFO)>, margin=8.0, model_name='LoraKGE_Layers', multi_layers_path='train_sorted_by_edges_betweenness.txt', neg_ratio=10, note='', num_ent_layers='20', num_layer=1, num_rel_layers=20, patience='1', predict_result=False, r=100, r_fixed=True, random_seed=3407, record=False, rel_r='200', save_path='./checkpoint/FB_CKGE', skip_previous='False', snapshot_num=5, train_new=True, using_multi_layers=False, using_various_ranks='True', using_various_ranks_reverse=False, valid_metrics='mrr')
+2025-01-06 18:24:21,515 INFO    : Snapshot:0	0	1	Epoch:0	Loss:91.268	MRR:22.64	Hits@10:42.62	Best:22.64
+2025-01-06 18:24:38,239 INFO    : Snapshot:0	0	1	Epoch:1	Loss:17.198	MRR:24.74	Hits@10:45.16	Best:24.74
+2025-01-06 18:24:54,676 INFO    : Early Stopping! Snapshot:0 Epoch: 2 Best Results: 24.74
+2025-01-06 18:24:54,794 INFO    : => loading checkpoint './checkpoint/FB_CKGE\0model_best.tar'
+2025-01-06 18:25:03,523 INFO    : 
++------------+-------+--------+--------+--------+---------+
+| Snapshot:0 |  MRR  | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+-------+--------+--------+--------+---------+
+|     0      | 0.246 | 0.1419 | 0.2865 |  0.36  |  0.452  |
++------------+-------+--------+--------+--------+---------+
+2025-01-06 18:25:14,687 INFO    : Snapshot:1	0	1	Epoch:0	Loss:9.955	MRR:11.28	Hits@10:20.49	Best:11.28
+2025-01-06 18:25:20,002 INFO    : Snapshot:1	0	1	Epoch:1	Loss:2.758	MRR:13.27	Hits@10:25.14	Best:13.27
+2025-01-06 18:25:25,490 INFO    : Snapshot:1	0	1	Epoch:2	Loss:1.855	MRR:14.2	Hits@10:27.0	Best:14.2
+2025-01-06 18:25:30,785 INFO    : Snapshot:1	0	1	Epoch:3	Loss:1.488	MRR:14.95	Hits@10:28.35	Best:14.95
+2025-01-06 18:25:36,007 INFO    : Snapshot:1	0	1	Epoch:4	Loss:1.283	MRR:15.25	Hits@10:28.7	Best:15.25
+2025-01-06 18:25:41,303 INFO    : Early Stopping! Snapshot:1 Epoch: 5 Best Results: 15.25
+2025-01-06 18:25:41,414 INFO    : => loading checkpoint './checkpoint/FB_CKGE\1model_best.tar'
+2025-01-06 18:25:56,003 INFO    : 
++------------+--------+--------+--------+--------+---------+
+| Snapshot:1 |  MRR   | Hits@1 | Hits@3 | Hits@5 | Hits@10 |
++------------+--------+--------+--------+--------+---------+
+|     0      | 0.246  | 0.1419 | 0.2865 |  0.36  |  0.452  |
+|     1      | 0.1602 | 0.0934 | 0.1739 | 0.2218 |  0.2908 |
++------------+--------+--------+--------+--------+---------+
