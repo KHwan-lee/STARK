@@ -100,6 +100,33 @@ class Instructor():
     def next_snapshot_setting(self):
         """ Prepare for next snapshot """
         self.model.switch_snapshot()
+    
+    def save_embeddings(self, model, dataset_name, snapshot):
+        """
+        모델의 엔티티 임베딩을 저장하는 함수
+        
+        Args:
+            model: 학습된 LoraKGE_Layers 모델
+            dataset_name: 데이터셋 이름
+            snapshot: 스냅샷 번호
+        """
+        import os
+        
+        # 저장할 디렉토리 생성
+        save_dir = f'embeddings/{dataset_name}/{snapshot}'
+        os.makedirs(save_dir, exist_ok=True)
+        
+        # 엔티티 임베딩 저장
+        entity_embeddings = model.ent_embeddings.weight.detach().cpu().numpy()
+        np.save(f'{save_dir}/entity_embeddings.npy', entity_embeddings)
+        
+        # 관계 임베딩 저장
+        relation_embeddings = model.rel_embeddings.weight.detach().cpu().numpy()
+        np.save(f'{save_dir}/relation_embeddings.npy', relation_embeddings)
+        
+        print(f"임베딩이 {save_dir}에 저장되었습니다.")
+        print(f"엔티티 임베딩 shape: {entity_embeddings.shape}")
+        print(f"관계 임베딩 shape: {relation_embeddings.shape}")
 
     def run(self):
         """ Run the instructor of the model. The training process on all snapshots """
@@ -134,6 +161,8 @@ class Instructor():
             #training_time = 0
             training_time = self.train()
 
+            self.save_embeddings(self.model, self.args.dataset, self.args.snapshot)
+
             """ prepare result table """
             test_res = PrettyTable()
             test_res.field_names = [
@@ -162,10 +191,10 @@ class Instructor():
                     test_ss_id, res['mrr'], res['hits1'], res['hits3'], res['hits5'], res['hits10']
                 ])
                 reses.append(res)
-            if ss_id == self.args.snapshot_num - 1:
+            if ss_id == int(self.args.snapshot_num) - 1:
                 BWT.extend(
                     reses[iid]['mrr'] - first_learning_res[iid]
-                    for iid in range(self.args.snapshot_num - 1)
+                    for iid in range(int(self.args.snapshot_num) - 1)
                 )
             self.args.logger.info(f"\n{test_res}")
             test_results.append(test_res)

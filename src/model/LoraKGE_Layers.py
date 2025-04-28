@@ -33,19 +33,19 @@ class LoraKGE_Layers(BaseModel):
                 node, distance, score = int(line_list[0]), int(line_list[1]), float(line_list[2])
                 if node in all_new_entities:
                     # 추가된 디버그 출력
-                    # print(f"Node {node} | Distance: {distance} | Score: {score}") 
+                    # print(f"Node {node} | Distance: {distance} | Score: {score}")
                     all_new_entities[node] = (distance, score)
         # 수정한 부분
         #all_new_entities = dict(sorted(all_new_entities.items(), key = lambda kv:(kv[1][0], kv[1][1])))
         all_new_entities = dict(sorted(all_new_entities.items(), key = lambda kv:(kv[1][1]), reverse=True))
-        
+
         self.all_new_entities = all_new_entities
         all_new_entities = list(all_new_entities.keys())
 
         # 디버깅용 출력: 정렬 후의 값 확인
         # for node, (distance, score) in self.all_new_entities.items():
           #  print(f"Sorted Node {node} | Distance: {distance} | Score: {score}")
-        
+
         return all_new_entities
 
     def expand_lora_embeddings(self):
@@ -73,10 +73,10 @@ class LoraKGE_Layers(BaseModel):
             for i_layer in range(int(self.args.num_ent_layers)):
                 self.args.ent_r_list.append(sum(ent_node_list[i_layer * self.lora_ent_len: (i_layer + 1) * self.lora_ent_len]))
             average_nodes = sum(self.args.ent_r_list) / len(self.args.ent_r_list)
-            # 이거 0.9로 잡은건 너무 주작인거 같음..
+            # 0.9 -> 0.25
             r_threshold = int(int(self.args.ent_r) * 0.25)
             self.args.ent_r_list = [int(self.args.ent_r) * i / average_nodes if int(self.args.ent_r) * i / average_nodes > r_threshold else r_threshold for i in self.args.ent_r_list]
-            # 이건 왜 2번 반복되는가? -> 실수라고 함
+
             self.args.ent_r_list = [int(i) for i in self.args.ent_r_list]
             self.args.ent_r_list = [int(i) for i in self.args.ent_r_list]
             self.args.ent_r_list = [i if i else 1 for i in self.args.ent_r_list]
@@ -104,7 +104,7 @@ class LoraKGE_Layers(BaseModel):
             new_ent_embeddings = self.ent_embeddings.weight.data
             new_rel_embeddings = self.rel_embeddings.weight.data
             for lora_id in range(int(self.args.num_ent_layers) - 1):
-                
+
                 start_id = self.kg.snapshots[self.args.snapshot - 1].num_ent + lora_id * self.lora_ent_len
                 new_ent_embeddings[start_id: start_id + self.lora_ent_len] = Parameter(self.lora_ent_embeddings_list[lora_id].forward(torch.arange(self.lora_ent_len).to(self.args.device)))
                 print("debugging: " + str(start_id) + " " + str(self.lora_ent_len))
@@ -115,7 +115,7 @@ class LoraKGE_Layers(BaseModel):
             print(str(len(new_ent_embeddings)) + " " + str(len(ent_indices)))
             assert len(new_ent_embeddings) == len(ent_indices)
             new_ent_embeddings = new_ent_embeddings[ent_indices]
-            new_rel_embeddings[self.kg.snapshots[self.args.snapshot - 1].num_rel:] = Parameter(deepcopy(self.lora_rel_embeddings.forward(torch.arange(len(self.lora_rel_embeddings.weight)).to(self.args.device))))
+            new_rel_embeddings[self.kg.snapshots[self.args.snapshot - 1].num_rel:] = Parameter(deepcopy(self.lora_rel_embeddings.forward(torch.arange(len(self.lora_rel_embeddings.weight)).to(self.args.device))))       
             self.ent_embeddings.weight = Parameter(new_ent_embeddings)
             self.rel_embeddings.weight = Parameter(new_rel_embeddings)
         self.store_old_parameters()

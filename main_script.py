@@ -16,9 +16,9 @@ def run_command(command):
 
 # 데이터 전처리
 print("\n=== 데이터 전처리 ===")
-run_command("python data_to_id.py")
-run_command("python cal_features.py")
-run_command("python nodes_sort.py")
+# run_command("python data_to_id.py")
+# run_command("python cal_features.py")
+# run_command("python nodes_sort.py")
 
 # 다양한 데이터셋에 대해 모델 학습
 datasets = [
@@ -30,47 +30,55 @@ datasets = [
         "num_rel_layers": 1,
         "learning_rate": "1e-1"
     },
+    # {
+    #     "name": "WN_CKGE",
+    #     "ent_r": 200,
+    #     "rel_r": 200,
+    #     "num_ent_layers": 20,
+    #     "num_rel_layers": 1,
+    #     "learning_rate": "2e-1"
+    # }
+    # {
+    #     "name": "FACT",
+    #     "ent_r": 200,
+    #     "rel_r": 200,
+    #     "num_ent_layers": 20,
+    #     "num_rel_layers": 1,
+    #     "learning_rate": "1e-1"
+    # },
+    # {
+    #     "name": "HYBRID",
+    #     "ent_r": 200,
+    #     "rel_r": 150,
+    #     "num_ent_layers": 20,
+    #     "num_rel_layers": 1,
+    #     "learning_rate": "1e-1"
+    # },
+    # {
+    #     "name": "ENTITY",
+    #     "ent_r": 200,
+    #     "rel_r": 200,
+    #     "num_ent_layers": 20,
+    #     "num_rel_layers": 1,
+    #     "learning_rate": "2e-1"
+    # },
+    # {
+    #     "name": "RELATION",
+    #     "ent_r": 200,
+    #     "rel_r": 200,
+    #     "num_ent_layers": 20,
+    #     "num_rel_layers": 1,
+    #     "learning_rate": "3e-1"
+    # },
     {
-        "name": "WN_CKGE",
+        "name": "UNIONS",
         "ent_r": 200,
         "rel_r": 200,
         "num_ent_layers": 20,
         "num_rel_layers": 1,
-        "learning_rate": "2e-1"
-    },
-    {
-        "name": "FACT",
-        "ent_r": 200,
-        "rel_r": 200,
-        "num_ent_layers": 20,
-        "num_rel_layers": 1,
-        "learning_rate": "1e-1"
-    },
-    {
-        "name": "HYBRID",
-        "ent_r": 200,
-        "rel_r": 150,
-        "num_ent_layers": 20,
-        "num_rel_layers": 8,
-        "learning_rate": "1e-1"
-    },
-    {
-        "name": "ENTITY",
-        "ent_r": 200,
-        "rel_r": 200,
-        "num_ent_layers": 20,
-        "num_rel_layers": 1,
-        "learning_rate": "1e-1"
-    },
-    {
-        "name": "RELATION",
-        "ent_r": 200,
-        "rel_r": 200,
-        "num_ent_layers": 20,
-        "num_rel_layers": 10,
-        "learning_rate": "1e-1"
+        "learning_rate": "1e-1",
     }
-]
+    ]
 
 # 각 데이터셋에 대해 모델 학습 실행
 for dataset in datasets:
@@ -85,7 +93,8 @@ for dataset in datasets:
         f"-dataset {dataset['name']} "
         f"-learning_rate {dataset['learning_rate']} "
         f"-using_various_ranks True "
-        f"-patience 10"
+        f"-patience 10 "
+        f"-snapshot_num 1"
     )
     run_command(command)
     print(f"=== {dataset['name']} 데이터셋 학습 완료 ===")

@@ -5,13 +5,15 @@
 import os
 
 def nodes_sort():
-    dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
-    #dataset_names = ["FB_CKGE", "WN_CKGE"]
+    #dataset_names = ["ENTITY", "FACT",  "RELATION","HYBRID"]
+    dataset_names = ["UNIONS"]
+    print(dataset_names)
+
     base_path = "./data/"
     for dataset_name in dataset_names:
         seen_entities = set()
         true_path = os.path.join(base_path, dataset_name)
-        for snapshot in range(5):
+        for snapshot in range(1):
             entity2id = {}
             entities_sorted = {}
             true_path_snapshot = os.path.join(true_path, str(snapshot))
