@@ -28,14 +28,14 @@ class KnowledgeGraph():
         self.num_ent, self.num_rel = 0, 0
         self.entity2id, self.id2entity, self.relation2id, self.id2relation = {}, {}, {}, {}
         self.relationid2invid = {}
-        self.snapshots = {i: Snapshot() for i in range(int(1))}
+        self.snapshots = {i: Snapshot() for i in range(int(5))}
         self.load_data()
 
     def load_data(self):
         """ Load data from all snapshots """
         hr2t_all = {}
         train_all, valid_all, test_all = [], [], []
-        for ss_id in range(int(1)):
+        for ss_id in range(int(5)):
             self.new_entities = set()
             """ Step 1: (h, r, t) """
             train_facts = load_fact(f"./data/{self.data_name}/{str(ss_id)}/train.txt")
@@ -175,11 +175,11 @@ class Snapshot():
         self.new_entities = []
 
 def solve_network():
-    #dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
-    dataset_names = ["WN_CKGE"]
+    # dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
+    dataset_names = ["FB_CKGE", "WN_CKGE"]
     for data_name in dataset_names:
         data_path = f"./data/{data_name}/"
-        for i in tqdm(range(1)):
+        for i in tqdm(range(5)):
             g = nx.Graph()
             file_path = data_path + str(i) + "/train_id.txt"
             with open(file_path, "r", encoding="utf-8") as rf:
@@ -219,54 +219,49 @@ def solve_network():
             #     for node, centrality_sum in neighbor_centrality_sum.items():
             #         wf.write(f"{node}\t{centrality_sum}\n")
 
-def solve_network_with_betweenness_weighted_pagerank():
-    #dataset_names = ["ENTITY", "FACT", "RELATION","HYBRID"]
-    dataset_names = ["UNIONS"]
-    for data_name in dataset_names:
-        data_path = f"./data/{data_name}/"
-        for i in tqdm(range(1)):
-            g = nx.DiGraph()  # Use directed graph to allow weighted edges
-            file_path = data_path + str(i) + "/train_id.txt"
-            with open(file_path, "r", encoding="utf-8") as rf:
-                for line in rf.readlines():
-                    line = line.strip()
-                    line_list = line.split("\t")
-                    h = int(line_list[0])
-                    t = int(line_list[2])
-                    g.add_edge(h, t)
+def solve_network_with_betweenness_weighted_pagerank(data_name):
+    data_path = f"./data/{data_name}/"
+    for i in tqdm(range(5)):
+        g = nx.DiGraph()  # Use directed graph to allow weighted edges
+        file_path = data_path + str(i) + "/train_id.txt"
+        with open(file_path, "r", encoding="utf-8") as rf:
+            for line in rf.readlines():
+                line = line.strip()
+                line_list = line.split("\t")
+                h = int(line_list[0])
+                t = int(line_list[2])
+                g.add_edge(h, t)
 
-            # Calculate edge betweenness centrality
-            edge_betweenness = nx.edge_betweenness_centrality(g)
+        # Calculate edge betweenness centrality
+        edge_betweenness = nx.edge_betweenness_centrality(g)
 
-            # Assign betweenness centrality as edge weights
-            for u, v in g.edges():
-                g[u][v]['weight'] = edge_betweenness.get((u, v), 1.0)
+        # Assign betweenness centrality as edge weights
+        for u, v in g.edges():
+            g[u][v]['weight'] = edge_betweenness.get((u, v), 1.0)
 
-            # 초기 중요도를 차수로 설정(원래는 다 동일함)
-            degree_centrality = g.degree()
-            initial_importance = {node: degree for node, degree in degree_centrality}
+        # 초기 중요도를 차수로 설정(원래는 다 동일함)
+        degree_centrality = g.degree()
+        initial_importance = {node: degree for node, degree in degree_centrality}
 
-            # Normalize the initial importance values
-            total_importance = sum(initial_importance.values())
-            initial_importance = {node: importance / total_importance for node, importance in initial_importance.items()}
+        # Normalize the initial importance values
+        total_importance = sum(initial_importance.values())
+        initial_importance = {node: importance / total_importance for node, importance in initial_importance.items()}
 
-            # Calculate PageRank with edge betweenness weights
-            pagerank_centrality = nx.pagerank(g, alpha=0.5, weight='weight', max_iter=100)
+        # Calculate PageRank with edge betweenness weights
+        pagerank_centrality = nx.pagerank(g, alpha=0.85, weight='weight', max_iter=100)
 
-            # Save the weighted PageRank values to a file
-            nodes_pagerank_path = data_path + str(i) + "/train_nodes_pagerank.txt"
-            with open(nodes_pagerank_path, "w", encoding="utf-8") as wf:
-                for node, centrality in pagerank_centrality.items():
-                    wf.write(f"{node}\t{centrality}\n")
+        # Save the weighted PageRank values to a file
+        nodes_pagerank_path = data_path + str(i) + "/train_nodes_pagerank.txt"
+        with open(nodes_pagerank_path, "w", encoding="utf-8") as wf:
+            for node, centrality in pagerank_centrality.items():
+                wf.write(f"{node}\t{centrality}\n")
 
 if __name__ == "__main__":
 
-    #dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
-    #dataset_names = ["FACT", "ENTITY", "RELATION", "HYBRID"]
-    dataset_names = ["UNIONS"]
-    print(dataset_names)
-
+    dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
+    #dataset_names = ["FACT"]
+    #dataset_names = ["FB_CKGE",  "WN_CKGE"]
     for data_name in dataset_names:
         kg = KnowledgeGraph(data_name)
-    #solve_network()
-    solve_network_with_betweenness_weighted_pagerank()
+        solve_network_with_betweenness_weighted_pagerank()
+    

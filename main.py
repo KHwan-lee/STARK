@@ -161,8 +161,6 @@ class Instructor():
             #training_time = 0
             training_time = self.train()
 
-            self.save_embeddings(self.model, self.args.dataset, self.args.snapshot)
-
             """ prepare result table """
             test_res = PrettyTable()
             test_res.field_names = [
@@ -180,7 +178,7 @@ class Instructor():
             self.load_checkpoint(best_checkpoint)
 
             self.model.snapshot_post_processing()
-
+                        
             reses = []
             for test_ss_id in range(ss_id + 1):
                 self.args.snapshot_test = test_ss_id
@@ -204,9 +202,11 @@ class Instructor():
             report_results.add_row([ss_id, training_time, whole_mrr, whole_hits1, whole_hits3, whole_hits10])
             training_times.append(training_time)
 
-            if self.args.snapshot < int(self.args.snapshot_num) - 1:
-                self.next_snapshot_setting()
-                self.reset_model(optimizer=True)
+            #if self.args.snapshot < int(self.args.snapshot_num) - 1:
+            self.next_snapshot_setting()
+            self.save_embeddings(self.model, self.args.dataset, self.args.snapshot)
+            self.reset_model(optimizer=True)
+
         self.args.logger.info(f'Final Result:\n{test_results}')
         self.args.logger.info(f'Report Result:\n{report_results}')
         self.args.logger.info(f'Sum_Training_Time:{sum(training_times)}')

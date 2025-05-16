@@ -42,8 +42,8 @@ class BaseModel(nn.Module):
         pass
 
     def snapshot_post_processing(self):
-        """ Post after training on a snapshot """
         pass
+        
 
     def store_old_parameters(self):
         """ Store the learned model after training on a snapshot """

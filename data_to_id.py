@@ -28,14 +28,14 @@ class KnowledgeGraph():
         self.num_ent, self.num_rel = 0, 0
         self.entity2id, self.id2entity, self.relation2id, self.id2relation = {}, {}, {}, {}
         self.relationid2invid = {}
-        self.snapshots = {i: Snapshot() for i in range(int(1))}
+        self.snapshots = {i: Snapshot() for i in range(int(5))}
         self.load_data()
 
     def load_data(self):
         """ Load data from all snapshots """
         hr2t_all = {}
         train_all, valid_all, test_all = [], [], []
-        for ss_id in range(int(1)):
+        for ss_id in range(int(5)):
             self.new_entities = set()
             """ Step 1: (h, r, t) """
             train_facts = load_fact(f"./data/{self.data_name}/{str(ss_id)}/train.txt")
@@ -225,8 +225,8 @@ def solve_network(data_name):
                 wf.write("\n")
 
 if __name__ == "__main__":
-    dataset_names = ["UNIONS"]
-    # dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
+    #data_names = ["WN_CKGE", "FB_CKGE"]
+    dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
     for data in dataset_names:
         kg = KnowledgeGraph(data)
     # solve_network(data_name)

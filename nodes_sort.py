@@ -5,15 +5,13 @@
 import os
 
 def nodes_sort():
-    #dataset_names = ["ENTITY", "FACT",  "RELATION","HYBRID"]
-    dataset_names = ["UNIONS"]
-    print(dataset_names)
-
+    dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
+    #dataset_names = ["FB_CKGE", "WN_CKGE"]
     base_path = "./data/"
     for dataset_name in dataset_names:
         seen_entities = set()
         true_path = os.path.join(base_path, dataset_name)
-        for snapshot in range(1):
+        for snapshot in range(5):
             entity2id = {}
             entities_sorted = {}
             true_path_snapshot = os.path.join(true_path, str(snapshot))
@@ -76,8 +74,6 @@ def nodes_sort():
             with open(train_distance_nodes_path, "w", encoding="utf-8") as wf:
                 for key, value in entities_sorted.items():
                     wf.write(str(key))
-                    wf.write("\t")
-                    wf.write(str(value[0]))
                     wf.write("\t")
                     wf.write(str(value[1]))
                     wf.write("\n")

@@ -23,21 +23,21 @@ class LoraKGE_Layers(BaseModel):
     def get_new_ordered_entities(self):
         all_new_entities = {}
         for _ in range(self.kg.snapshots[self.args.snapshot].num_ent, self.kg.snapshots[self.args.snapshot + 1].num_ent):
-            all_new_entities[_] = (0, 0)
+            all_new_entities[_] = 0.0
         nodes_ordered_path = f"./data/{self.args.dataset}/{self.args.snapshot + 1}/train_distance_nodes2.txt"
         with open(nodes_ordered_path, "r", encoding="utf-8") as f:
             lines = list(f.readlines())
             for line in lines:
                 line = line.strip()
                 line_list = line.split("\t")
-                node, distance, score = int(line_list[0]), int(line_list[1]), float(line_list[2])
+                node, score = int(line_list[0]), float(line_list[1])
                 if node in all_new_entities:
                     # 추가된 디버그 출력
                     # print(f"Node {node} | Distance: {distance} | Score: {score}")
-                    all_new_entities[node] = (distance, score)
+                    all_new_entities[node] = score
         # 수정한 부분
-        #all_new_entities = dict(sorted(all_new_entities.items(), key = lambda kv:(kv[1][0], kv[1][1])))
-        all_new_entities = dict(sorted(all_new_entities.items(), key = lambda kv:(kv[1][1]), reverse=True))
+        #all_new_entities = dict(sorted(all_new_entities.items(), key = lambda kv:(kv[1][0], -kv[1][1])))
+        all_new_entities = dict(sorted(all_new_entities.items(), key = lambda kv:(kv[1]), reverse=True))
 
         self.all_new_entities = all_new_entities
         all_new_entities = list(all_new_entities.keys())
@@ -57,8 +57,6 @@ class LoraKGE_Layers(BaseModel):
         self.lora_ent_len = (new_ent_embeddings_len + int(self.args.num_ent_layers) - 1) // int(self.args.num_ent_layers)
         print("Each LoRA length: "+ str(self.lora_ent_len))
         tmp_r = self.args.ent_r
-        # 이것도 빼야 맞는듯
-        # self.args.ent_r = (self.lora_ent_len // 20) if (self.lora_ent_len // 20) > int(self.args.ent_r) else self.args.ent_r
 
         # check
         print(str(self.args.ent_r) + "\n")
@@ -68,7 +66,7 @@ class LoraKGE_Layers(BaseModel):
         if self.args.using_various_ranks:
             ent_node_list = []
             for k, v in self.all_new_entities.items():
-                ent_node_list.append(v[1])
+                ent_node_list.append(v)
             self.args.ent_r_list = []
             for i_layer in range(int(self.args.num_ent_layers)):
                 self.args.ent_r_list.append(sum(ent_node_list[i_layer * self.lora_ent_len: (i_layer + 1) * self.lora_ent_len]))
@@ -118,22 +116,28 @@ class LoraKGE_Layers(BaseModel):
             new_rel_embeddings[self.kg.snapshots[self.args.snapshot - 1].num_rel:] = Parameter(deepcopy(self.lora_rel_embeddings.forward(torch.arange(len(self.lora_rel_embeddings.weight)).to(self.args.device))))       
             self.ent_embeddings.weight = Parameter(new_ent_embeddings)
             self.rel_embeddings.weight = Parameter(new_rel_embeddings)
-        self.store_old_parameters()
-        ent_embeddings, rel_embeddings = self.expand_embedding_size()
-        new_ent_embeddings = ent_embeddings.weight.data
-        new_rel_embeddings = rel_embeddings.weight.data
-        new_ent_embeddings[:self.kg.snapshots[self.args.snapshot].num_ent] = Parameter(
-            self.ent_embeddings.weight.data
-        )
-        new_rel_embeddings[:self.kg.snapshots[self.args.snapshot].num_rel] = Parameter(
-            self.rel_embeddings.weight.data
-        )
-        self.ent_embeddings.weight = Parameter(new_ent_embeddings)
-        self.rel_embeddings.weight = Parameter(new_rel_embeddings)
-        self.ent_embeddings.requires_grad = False
-        self.rel_embeddings.requires_grad = False
-        self.lora_ent_embeddings_list_tmp, self.lora_rel_embeddings = self.expand_lora_embeddings()
-        self.lora_ent_embeddings_list = nn.ModuleList(self.lora_ent_embeddings_list_tmp)
+
+        if self.args.snapshot != 4:
+            self.store_old_parameters()
+
+
+            ent_embeddings, rel_embeddings = self.expand_embedding_size()
+
+            new_ent_embeddings = ent_embeddings.weight.data
+            new_rel_embeddings = rel_embeddings.weight.data
+            new_ent_embeddings[:self.kg.snapshots[self.args.snapshot].num_ent] = Parameter(
+                self.ent_embeddings.weight.data
+            )
+            new_rel_embeddings[:self.kg.snapshots[self.args.snapshot].num_rel] = Parameter(
+                self.rel_embeddings.weight.data
+            )
+            self.ent_embeddings.weight = Parameter(new_ent_embeddings)
+            self.rel_embeddings.weight = Parameter(new_rel_embeddings)
+            self.ent_embeddings.requires_grad = False
+            self.rel_embeddings.requires_grad = False
+
+            self.lora_ent_embeddings_list_tmp, self.lora_rel_embeddings = self.expand_lora_embeddings()
+            self.lora_ent_embeddings_list = nn.ModuleList(self.lora_ent_embeddings_list_tmp)
 
 class TransE(LoraKGE_Layers):
     def __init__(self, args, kg) -> None:
