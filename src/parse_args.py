@@ -21,7 +21,18 @@ parser.add_argument("-note", dest='note', default='', help='The note of log file
 parser.add_argument("-snapshot_num", dest="snapshot_num", default=5, help="The number of snapshots")
 parser.add_argument("-emb_dim", dest="emb_dim", default=200, help="embedding dimension")
 parser.add_argument("-margin", dest="margin", default=8.0, help="The margin of MarginLoss")
-parser.add_argument("-neg_ratio", dest="neg_ratio", default=10, help="the ratio of negtive/postive facts")
+parser.add_argument("-neg_ratio", dest="neg_ratio", type=int, default=10, help="the ratio of negtive/postive facts")
+parser.add_argument("-lambda_dyn", dest="lambda_dyn", type=float, default=1.0, help="Base margin (γ) used in the hinge loss")
+parser.add_argument(
+    "-fusion_weight", dest="fusion_weight",
+    type=float, default=0.5,
+    help="weight w for entity-based vs triple-based beta mixture"
+)
+parser.add_argument(
+    "-hub_scale", dest="hub_scale",
+    type=float, default=0.1,
+    help="global scale factor to multiply beta before combining losses"
+)
 parser.add_argument("-l2", dest='l2', default=0.0, help="optimizer l2")
 parser.add_argument("-num_layer", dest="num_layer", default=1, help='MAE layer')
 parser.add_argument("-skip_previous", dest="skip_previous", default="False", help="Allow re-training and snapshot_only models skip previous training")

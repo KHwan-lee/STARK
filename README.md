@@ -1,1 +1,3 @@
-# KH reserach
+# STARK
+
+how to use: ./main.sh

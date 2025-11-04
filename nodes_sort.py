@@ -5,7 +5,7 @@
 import os
 
 def nodes_sort():
-    dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID", "WN_CKGE"]
+    dataset_names = ["ENTITY", "FACT", "FB_CKGE", "RELATION","HYBRID"]
     #dataset_names = ["FB_CKGE", "WN_CKGE"]
     base_path = "./data/"
     for dataset_name in dataset_names:
@@ -57,6 +57,8 @@ def nodes_sort():
                     # change here
                     #nodes_degree_path = os.path.join(true_path_snapshot, "train_nodes_degree.txt")
                     nodes_degree_path = os.path.join(true_path_snapshot, "train_nodes_pagerank.txt")
+                    #nodes_degree_path = os.path.join(true_path_snapshot, "train_nodes_pagerank2.txt")
+
                     with open(nodes_degree_path, "r", encoding="utf-8") as rrf:
                         lines = list(rrf.readlines())
                         for line in lines:
@@ -66,14 +68,16 @@ def nodes_sort():
                                 entities_sorted[int(entity)] = (entities_sorted[int(entity)][0], float(nodes))
                             else:
                                 entities_sorted[int(entity)] = (100, float(nodes))
-                                # 얘네도 본것으로 처리를 해야함
                                 seen_entities.add(int(entity))
-            # 새로운 기준을 저장할 파일
             #train_distance_nodes_path = os.path.join(true_path_snapshot, "train_distance_nodes.txt")
             train_distance_nodes_path = os.path.join(true_path_snapshot, "train_distance_nodes2.txt")
+            #train_distance_nodes_path = os.path.join(true_path_snapshot, "train_distance_nodes3.txt")
+
             with open(train_distance_nodes_path, "w", encoding="utf-8") as wf:
                 for key, value in entities_sorted.items():
                     wf.write(str(key))
+                    wf.write("\t")
+                    wf.write(str(value[0]))
                     wf.write("\t")
                     wf.write(str(value[1]))
                     wf.write("\n")

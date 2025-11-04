@@ -1,4 +1,5 @@
 from src.utils import *
+from collections import defaultdict, Counter
 
 def load_fact(path):
     """ load facts from xxx.txt """
@@ -19,6 +20,10 @@ class KnowledgeGraph():
     def __init__(self, args) -> None:
         self.args = args
         self.num_ent, self.num_rel = 0, 0
+        ## add hr2t, tr2h for train
+        self.train_hr2t = defaultdict(set)
+        self.train_tr2h = defaultdict(set)
+
         self.entity2id, self.id2entity, self.relation2id, self.id2relation = {}, {}, {}, {}
         self.relationid2invid = {}
         self.snapshots = {i: Snapshot(self.args) for i in range(int(self.args.snapshot_num))}
@@ -26,6 +31,7 @@ class KnowledgeGraph():
 
     def load_data(self):
         """ Load data from all snapshots """
+
         hr2t_all = {}
         train_all, valid_all, test_all = [], [], []
         for ss_id in range(int(self.args.snapshot_num)):
@@ -52,6 +58,29 @@ class KnowledgeGraph():
             """
             edge_h, edge_r, edge_t = [], [], []
             edge_h, edge_r, edge_t = self.expand_kg(train, 'train', edge_h, edge_r, edge_t, hr2t_all)
+            
+
+            self.triple_type = {}
+            type_counts = Counter()
+
+            for (h, r, t) in train:
+                hr_count = len(self.train_hr2t[(h,r)])
+                tr_count = len(self.train_tr2h[(t, r)])
+
+                if hr_count == 1 and tr_count == 1:
+                    cat = '1-1'
+                elif hr_count > 1 and tr_count == 1:
+                    cat = '1-N'
+                elif hr_count == 1 and tr_count > 1:
+                    cat = 'N-1'
+                else:
+                    cat = 'N-N'
+                self.triple_type[(h, r, t)] = cat
+                type_counts[cat] += 1
+                # Debug print per snapshot
+            
+            print(f"[DEBUG] Snapshot {ss_id}: triple type counts -> {dict(type_counts)}")
+
             edge_h, edge_r, edge_t = self.expand_kg(valid, 'valid', edge_h, edge_r, edge_t, hr2t_all)
             edge_h, edge_r, edge_t = self.expand_kg(test, 'test', edge_h, edge_r, edge_t, hr2t_all)
 
@@ -107,6 +136,9 @@ class KnowledgeGraph():
                 edge_h.append(h) # 왜 edge로 했지? node가 아닌가?
                 edge_r.append(r)
                 edge_t.append(t) # 왜 edge로 했지?
+                # hr2t, tr2h
+                self.train_hr2t[(h, r)].add(t)
+                self.train_tr2h[(t, r)].add(h)
             """ hr2t """
             add_key2val(hr2t_all, (h, r), t)
             add_key2val(hr2t_all, (t, self.relationid2invid[r]), h)
