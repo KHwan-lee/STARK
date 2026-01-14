@@ -44,3 +44,7 @@ To run STARK, simply execute the following command:
 
 ```bash
 ./main.sh
+
+## Acknowledgement
+Our codebase is built upon the implementation of [FastKGE](https://github.com/seukgcode/FastKGE). We thank the authors for their great work and for making the code publicly available.
+
