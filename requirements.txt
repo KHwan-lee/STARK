@@ -64,7 +64,7 @@ safetensors==0.3.3
 scipy==1.7.3
 six==1.16.0
 tokenizers==0.13.3
-torch==1.13.1
+torch==2.8.0
 torchaudio==0.13.1
 torchvision==0.14.1
 tornado==6.2
